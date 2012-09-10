@@ -1,0 +1,6 @@
+h1. Grails-Akka
+
+h2. Introduction
+
+Makes possible to use Akka Actors from a Grails webapp.
+
