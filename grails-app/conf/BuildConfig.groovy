@@ -1,8 +1,12 @@
+// grails.servlet.version = "3.0"  // TODO: verify if makes sense to enable this even here ...
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
+grails.project.source.level = 1.6
 grails.project.target.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
+
+def akkaVersion = '2.0.3'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -18,14 +22,12 @@ grails.project.dependency.resolution = {
         // uncomment the below to enable remote dependency resolution from public Maven repositories
         //mavenCentral()
         //mavenLocal()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "http://repo.typesafe.com/typesafe/releases/"
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+        compile "com.typesafe.akka:akka-actor:$akkaVersion"
     }
 
     plugins {
