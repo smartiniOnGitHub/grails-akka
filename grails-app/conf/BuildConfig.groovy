@@ -28,6 +28,7 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
         compile("com.typesafe.akka:akka-actor:$akkaVersion", "com.typesafe.akka:akka-remote:$akkaVersion")
+		test("com.typesafe.akka:akka-testkit:$akkaVersion")
     }
 
     plugins {
