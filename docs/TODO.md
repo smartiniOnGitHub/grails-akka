@@ -1,4 +1,42 @@
-
 grails-akka - TODO
 ==================
 
+TODO
+----
+
+- verify the info put in readme.md, if are right ...
+
+- add a sample 
+
+- add scala source folders ... ok
+    + then verify if some scala content there is compiled ...
+    + then verify how to create them even when installing the plugin in a test webapp ...
+    + verify if exclude the transitivity of scala (at least put a commented line in the BuildConfig of the  plugin) ...
+        * and maybe even a note in the test webapp for it ...
+    + verify how to make it load a config file, maybe with a dedicated key under Config.grails (in the webapp or in the plugin ? or in both ?), or using grails.config.locations ...
+    + then verify if make an akkaService, and test it
+
+    + try with some local actor:
+  http://doc.akka.io/docs/akka/2.0.3/java/untyped-actors.html
+        * but verify how from a webapp ...
+	
+- then, try to use some remote actor ... 
+    + for example, run a microkernel application under integration tests, used by grails-akka-test       webapp integration tests ...
+
+- create a sample project where to put common classes for messages, etc ...
+    + maybe build it with gradle ...
+
+- enable scala compilation ...
+
+- etc ...
+
+--------------
+
+
+DONE
+----
+
+- add akka license and scala license ... ok
+
+
+--------------
