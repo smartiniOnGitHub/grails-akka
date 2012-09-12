@@ -31,13 +31,10 @@ public class GreetingActor extends UntypedActor
         {
             log.info("$messageClassName: Hello \"" + ((Greeting) message)?.who + "\"")
         }
-/*
-        else if (message instanceof Command)
-        {
-            String command = ((Command) message).command
-            log.info(messageClassName + ": " + "Processing command \"" + command + "\" ...")
-        }
- */
+        // else if (message instanceof BaseMessage)  // but it's abstract ...
+        // {
+        //     log.info("$messageClassName: Hello BaseMessage instance")
+        // }
         else if (message instanceof Stop)
         {
             log.info(messageClassName + ": " + "Stop this actor now ...")

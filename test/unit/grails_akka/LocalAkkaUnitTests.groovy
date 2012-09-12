@@ -197,4 +197,27 @@ class LocalAkkaUnitTests
         // ok, but note that this actor (after the Shutdown message) will not get this message ...
     }
 
+    @Test
+    void testLocalAkkaSystem_ActorCommand()
+    {
+        log.info "testLocalAkkaSystem_ActorCommand()"
+
+        println("Actor System    instance is: $system")
+        assertNotNull system
+        println("Actor Reference instance is: $actor")
+        assertNotNull actor
+
+        // wrap sending message to the actor inside a command
+        ActorCommand cmd = new ActorCommand(actor, new GenericMessage<String>("ActorCommand: simple generic message with a String"))
+        println("ActorCommand    instance is: $cmd")
+        cmd.execute()
+        assertNotNull cmd  // dummy
+
+        // wrap sending message to the actor inside a command
+        ActorCommand cmd2 = new ActorCommand(actor, new String("ActorCommand: Test String"))
+        println("ActorCommand    instance is: $cmd2")
+        cmd2.execute()
+        assertNotNull cmd2  // dummy
+    }
+
 }
