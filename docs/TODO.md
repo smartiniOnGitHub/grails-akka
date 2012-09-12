@@ -77,6 +77,7 @@ cls && grails test-app integration: -echoOut
 	+ add some Groovy-specific extensions (annotations, etc), to show how to simplify code ... ok
 
 - move test classes in subpackages by type (actor, command, message) ... ok
+- copy classes used by tests (actor, command, message) even under the test webapp, to test (later) real calls to them from there ... ok
 
 
 ---------------
