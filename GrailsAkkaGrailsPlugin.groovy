@@ -28,13 +28,13 @@ Note that it requires a Servlet 3.x environment to run.
     def license = "APACHE"
 
     // Details of company behind the plugin (if there is one)
-//    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
+//    def organization = [ name: "MartinS", url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
 
     // Any additional developers beyond the author specified above.
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
+//    def developers = [ [ name: "other developer", email: "other.developer@my-company.com" ]]
 
     // Location of the plugin's issue tracker.
-//    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
+    def issueManagement = [ system: "JIRA", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
 
     // Online location of the plugin's browseable source code.
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]

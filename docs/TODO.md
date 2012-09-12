@@ -7,8 +7,6 @@ TODO
 - package the plugin and verify if all is good
 	+ maybe add by hand README.md, NOTICE, LICENSE, and RELEASE-NOTES and README if present ...
 
-- make messages classes more Groovy-like ...
-
 
 - try with some local actor
     + then verify from the test webapp ...
@@ -17,6 +15,11 @@ TODO
 
 - add some long-running actor, for example giving it the delay ...
 	+ ok, but up to now it doesn't seem to block execution for the given delay ... verify better, to make it work
+
+- add sample of (better) testing of actors and logic used inside them using akka TestKit, as seen here:
+  http://doc.akka.io/docs/akka/2.1-M2/java/testing.html
+  http://doc.akka.io/docs/akka/2.0.3/scala/testing.html
+  
 
 - try to use some remote actor ... 
     + grails-akka-test webapp integration tests: 
@@ -50,7 +53,7 @@ TODO
 
 - etc ...
 
---------------
+---------------
 
 
 DONE
@@ -70,5 +73,10 @@ cls && grails test-app integration: -echoOut
 	+ ok (but without a sepcific configuration given to it), 
 	  both in unit and integration tests (but had to duplicate test classes, to not put in the plugin, to have it cleaner) ...
 
+- make messages classes more Groovy-like ... ok
+	+ add some Groovy-specific extensions (annotations, etc), to show how to simplify code ... ok
 
---------------
+- move test classes in subpackages by type (actor, command, message) ... ok
+
+
+---------------

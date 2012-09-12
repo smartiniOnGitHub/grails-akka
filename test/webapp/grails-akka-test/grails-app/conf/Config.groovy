@@ -88,5 +88,5 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 
-	// optional, add higher logging level for the given package
+    // optional, add higher logging level for the given package
 }
