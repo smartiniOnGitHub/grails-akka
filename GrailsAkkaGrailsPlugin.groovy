@@ -33,7 +33,7 @@ Note that it requires a Servlet 3.x environment to run.
 //    def developers = [ [ name: "other developer", email: "other.developer@my-company.com" ]]
 
     // Location of the plugin's issue tracker.
-    def issueManagement = [ system: "JIRA", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
+    def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
 
     // Online location of the plugin's browseable source code.
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]

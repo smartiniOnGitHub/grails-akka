@@ -13,8 +13,8 @@ TODO
 
 - fix docs and write the 2 Changelog (or similar) ... with 0.5, and 1.0, then remove this line
 
-- package the plugin and verify if all is good
-	+ maybe add by hand README.md, NOTICE, LICENSE, and RELEASE-NOTES and README if present ...
+- package the plugin and verify if all is good ...
+	+ add by hand README.md, NOTICE, LICENSE, and RELEASE-NOTES and README if present ...
 
 
 - for release 1.0:
@@ -34,6 +34,7 @@ TODO
 	+ make it load a config file from the classpath, 
 	  maybe with a dedicated key under Config.grails (in the webapp or in the plugin ? or in both ?), or using grails.config.locations ...
 		* use sample conf files for Java and put under integration tests root folder, then try to use them
+	+ update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
 
 
 - for later:
