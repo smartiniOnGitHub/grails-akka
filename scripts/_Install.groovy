@@ -5,4 +5,4 @@
 // use 'ant' to access a global instance of AntBuilder
 //
 Ant.property(environment: "env")
-Ant.mkdir(dir: "${basedir}/src/scala")
+// Ant.mkdir(dir: "${basedir}/src/scala")

@@ -1,4 +1,4 @@
-// grails.servlet.version = "3.0"  // TODO: verify if makes sense to enable this even here ...
+// grails.servlet.version = "3.0"  // verify if makes sense to enable this even here ...
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -11,15 +11,13 @@ def akkaVersion = '2.0.3'
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
-        // uncomment to disable ehcache
-        // excludes 'ehcache'
+        // excludes 'ehcache'  // uncomment to disable ehcache
     }
 
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
 
     repositories {
         grailsCentral()
-        // uncomment the below to enable remote dependency resolution from public Maven repositories
         //mavenCentral()
         //mavenLocal()
         mavenRepo "http://repo.typesafe.com/typesafe/releases/"
