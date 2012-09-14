@@ -42,5 +42,5 @@ Documentation
 See the Plugin documentation (sources under src/docs/).
 
 Home Page for the project (and sources) on GitHUB:
-[grails-akka](https://github.com/smartiniOnGitHub/grails-akka`)
+[grails-akka](https://github.com/smartiniOnGitHub/grails-akka/)
 

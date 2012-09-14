@@ -2,5 +2,7 @@ h1. Grails-Akka
 
 h2. Introduction
 
-Makes possible to use Akka Actors from a Grails webapp.
+This plugin makes it easy to use [Akka](http://akka.io/) Actors (both local and remote) from a Grails webapp.
+
+All using standard Groovy / Java code.
 

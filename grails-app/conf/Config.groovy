@@ -22,3 +22,8 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+
+grails.doc.authors = 'Sandro Martini'
+grails.doc.license = 'Apache License 2.0'
+grails.doc.title   = 'Akka Plugin'
