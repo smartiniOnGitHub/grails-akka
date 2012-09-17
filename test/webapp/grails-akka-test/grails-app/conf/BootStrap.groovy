@@ -17,8 +17,8 @@ class BootStrap
         // final ClassLoader tccl = thread.getContextClassLoader();
 
         println """
-Remember that to test in the right way the grails-akka plugin (inline here),
-this webapp must be run not with run-app, but with run-war ...
+Remember that to test the plugin (inline here),
+this webapp (other than the usual run-app) could be run even with with run-war ...
                 """
 
     }
