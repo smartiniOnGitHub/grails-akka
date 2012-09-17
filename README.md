@@ -1,5 +1,5 @@
-grails-akka
-===========
+akka
+====
 
 This is a Grails Plugin that enable the usage of Akka actors (both local and remote) in Grails Web projects.
 
@@ -23,7 +23,7 @@ Installation
 
 In BuildConfig.groovy of the webapp, under the plugins section (at the end of the file) add:
 
-	compile ":grails-akka:<version>"
+	compile ":akka:<version>"
 
 and copy the plugin zip under the webapp lib folder, 
 then run grails refresh-dependencies, grails clean , then grails compile , and the plugin should be installed.
@@ -42,5 +42,5 @@ Documentation
 See the Plugin documentation (sources under src/docs/).
 
 Home Page for the project (and sources) on GitHUB:
-[grails-akka](https://github.com/smartiniOnGitHub/grails-akka/)
+[akka](https://github.com/smartiniOnGitHub/grails-akka/)
 

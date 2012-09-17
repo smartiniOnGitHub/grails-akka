@@ -29,7 +29,7 @@ hibernate {
 }
 
 // environment specific settings
-environments 
+environments
 {
     development {
         dataSource {

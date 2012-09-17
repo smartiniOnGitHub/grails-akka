@@ -43,7 +43,7 @@ Note that it requires a Servlet 3.x environment to run.
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
 
 
-	// private Logger log = Logger.getLogger('grails.plugin.akka.AkkaGrailsPlugin')
+    // private Logger log = Logger.getLogger('grails.plugin.akka.AkkaGrailsPlugin')
 
 
     def doWithWebDescriptor = { xml ->

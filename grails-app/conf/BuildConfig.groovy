@@ -47,11 +47,11 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         def excludes = {
-			// disable excludes, or compile errors will happen ...
-			// // exclude, to avoid version conflict
-		    // excludes 'scala-library'
-			// excludes 'commons-codec'
-			// excludes 'commons-io'
+            // disable excludes, or compile errors will happen ...
+            // // exclude, to avoid version conflict
+            // excludes 'scala-library'
+            // excludes 'commons-codec'
+            // excludes 'commons-io'
             // transitive = false
         }
 

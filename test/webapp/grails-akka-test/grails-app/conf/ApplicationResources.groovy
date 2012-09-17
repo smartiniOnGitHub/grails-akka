@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-modules = 
+modules =
 {
     application {
         resource url:'js/application.js'

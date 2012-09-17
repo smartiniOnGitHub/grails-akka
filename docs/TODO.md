@@ -6,10 +6,10 @@ TODO
 
 - fix docs and write the 2 Changelog (or similar) ... with 0.5, and 1.0, then remove this line
 
-- package the plugin and verify if all is good ...
-	+ add by hand README.md, NOTICE, LICENSE, and RELEASE-NOTES and README if present ...
-	+ add by hand CHANGES.md with inside the full history of changes
-		* better, put this in plugin docs
+- for release 0.5 (first public release):
+	+ tag sources in git
+	+ put in downloads a zipped version of the plugin
+		* add by hand README.md, NOTICE, LICENSE, and RELEASE-NOTES and README if present ...
 
 
 - for release 1.0:
@@ -35,6 +35,7 @@ TODO
 	  maybe with a dedicated key under Config.grails (in the webapp or in the plugin ? or in both ?), or using grails.config.locations ...
 		* use sample conf files for Java and put under integration tests root folder, then try to use them
 	+ update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
+		* add by hand CHANGES.md with inside the full history of changes ... no, better: put this in plugin docs, in gdoc format
 
 
 - for later:
@@ -84,8 +85,7 @@ cls && grails test-app integration: -echoOut
 - try with some local actor:
     + then verify them from the test webapp ... ok
 
-- in the test webapp, do a grails war and inspect the generated war file ...
-
+- in the test webapp, do a grails war and inspect the generated war file ... ok
 
 
 

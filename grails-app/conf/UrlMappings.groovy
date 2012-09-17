@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-class UrlMappings 
+class UrlMappings
 {
 
     static mappings = {
