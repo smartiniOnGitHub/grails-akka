@@ -4,16 +4,6 @@ grails-akka - TODO
 TODO
 ----
 
-- exclude the transitivity of scala, to avoid dependency errors in the grails dependency-report ...
-	+ put exclusions for this in the BuildConfig of the plugin, until I get 0 evicted (in build, compile, and runtime)... ok
-		* I commented all the exclusions for now otherwise a compile error will happen ...
-		  just for reference, but could be the wrong way to do this, so let's see later if/how to fix this
-
-- try with some local actor:
-    + then verify them from the test webapp ...
-
-- in the test webapp, do a grails war and inspect the generated war file ...
-
 - fix docs and write the 2 Changelog (or similar) ... with 0.5, and 1.0, then remove this line
 
 - package the plugin and verify if all is good ...
@@ -31,6 +21,10 @@ TODO
 	+ make an akkaService, and test it
 		* do it in the test webapp, because probably in the plugin it would be hard to have it so much generalized ...
 	+ fix TODO in code ...
+	+ exclude the transitivity of scala, to avoid dependency errors in the grails dependency-report ...
+		* put exclusions for this in the BuildConfig of the plugin, until I get 0 evicted (in build, compile, and runtime)... ok
+		* I commented all the exclusions for now otherwise a compile error will happen ...
+		  just for reference, but could be the wrong way to do this, so let's see later if/how to fix this
 
 
 - for release 1.0 or later:
@@ -47,6 +41,7 @@ TODO
 	+ enabling scala ...
 		* re-enable the creation of scala source folders when installing the plugin in a test webapp ...
 		* enable scala compilation and verify if some scala content there is compiled ...
+		* or maybe use the grails-scala plugin, but ONLY if updated to Scala version used by Akka here (now is Scala-2.9.2) ...
 	+ create a sample Java/Groovy project where to put common classes for messages, and use it from the test webapp ...
 		* maybe build it with gradle ...
 
@@ -58,12 +53,6 @@ TODO
 
 DONE
 ----
-
-- add references to akka license and scala license in NOTICE ... ok
-
-- add (as usual) the ant build_trim-whitespace.xml, to normalize sources ...
-	+ use it with: ant -f build_trim-whitespace.xml
-	  (the trim-whitespace target is the default)
 
 - run grails tests with output to console enabled, like this:
 cls && grails test-app unit: -echoOut
@@ -83,7 +72,21 @@ cls && grails test-app integration: -echoOut
 - move test classes in subpackages by type (actor, command, message) ... ok
 - copy classes used by tests (actor, command, message) even under the test webapp, to test (later) real calls to them from there ... ok
 
-- comment the creation of scala source folders and other scala-related stuff ...
+- comment the creation of scala source folders and other scala-related stuff ... ok
+
+- add (as usual) the ant build_trim-whitespace.xml, to normalize sources ...
+	+ use it with: ant -f build_trim-whitespace.xml
+	  (the trim-whitespace target is the default)
+
+- add references to akka license (and maybe even to scala license) in NOTICE ... ok
+- add Apache license header in any file, important ... ok
+
+- try with some local actor:
+    + then verify them from the test webapp ... ok
+
+- in the test webapp, do a grails war and inspect the generated war file ...
+
+
 
 
 ---------------
