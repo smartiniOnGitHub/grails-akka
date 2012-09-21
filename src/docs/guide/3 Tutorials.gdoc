@@ -1,5 +1,17 @@
-h1. Grails-Akka
+h4. Samples
 
-h2. Tutorials
+In Plugin sources under the [test|https://github.com/smartiniOnGitHub/grails-akka/tree/master/test/] folder
+there there are some initial unit and integration tests,
+and even an inline test webapp.
 
-TODO ...
+Code is duplicated to avoid unnecessary complexity.
+
+Note that some code is more general than required for tests, but only to show some basic features.
+
+
+h4. Akka documentation
+
+Look at Akka API for Java, usable from Groovy and Java code,
+from here [Akka Java API|http://doc.akka.io/docs/akka/2.0.3/java/]
+
+

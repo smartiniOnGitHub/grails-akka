@@ -1,5 +1,27 @@
-h1. Grails-Akka
+h4. Installing the plugin
 
-h2. Usage
+First you need to install the plugin into a Grails application:
+using the recommended way, configure it as a dependency in @BuildConfig.groovy@:
+{code}
+plugins {
+    compile ':akka:0.5'
+}
+{code}
 
-TODO ...
+or the old way:
+{code}
+grails install-plugin akka
+{code}
+
+
+h4. Requirements
+
+* a Servlet 3.x container to run the Web application, so be sure to force it in @BuildConfig.groovy@:
+{code}
+grails.servlet.version = "3.0"
+{code}
+
+* Akka 2.x (as specified in plugin descriptor) and related dependencies,
+all downloaded from the Central Maven Repository (that must be enabled), and the Typesafe Maven Repository (defined inside the plugin).
+
+

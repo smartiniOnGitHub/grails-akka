@@ -30,8 +30,7 @@ class AkkaGrailsPlugin {
     def author = "Sandro Martini"
     def authorEmail = "sandro.martini@gmail.com"
     def description = '''\
-Let Grails webapps to call/use Akka actors from Groovy and Java.
-Note that it requires a Servlet 3.x environment to run.
+Akka actors integration from Groovy and Java, in a Servlet 3.x environment.
 '''
     def documentation = "http://grails.org/plugin/akka"
 

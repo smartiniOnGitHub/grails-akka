@@ -43,7 +43,10 @@ limitations under the License.
             <include name="**/*.groovy"/>
             <include name="**/*.scala"/>
             <include name="**/*.htm"/>
+            <include name="**/*.html"/>
+            <include name="**/*.gdoc"/>
             <include name="**/*.gsp"/>
+            <include name="**/*.md"/>
         </fileset>
         <replaceregexp match="[\t]" replace="    " flags="gm" byline="true">
             <fileset refid="trimfiles"/>

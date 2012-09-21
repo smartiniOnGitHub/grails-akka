@@ -23,16 +23,16 @@ Installation
 
 In BuildConfig.groovy of the webapp, under the plugins section (at the end of the file) add:
 
-	compile ":akka:<version>"
+    compile ":akka:<version>"
 
-and copy the plugin zip under the webapp lib folder, 
+and copy the plugin zip under the webapp lib folder,
 then run grails refresh-dependencies, grails clean , then grails compile , and the plugin should be installed.
 In case of Errors during plugin installation, Set log level to 'warn' in BuildConfig.groovy to get more information, and retry.
 Instead of the compile it's possible even to use runtime, and in that case simply running a grails console should be enough.
 
-One time installed, you can safely move in a backup folder or delete the plugin zip just copied, 
+One time installed, you can safely move in a backup folder or delete the plugin zip just copied,
 but if the project folder (under the user home folder) is deleted, the plugin should be reinstalled.
-Instead, running a grails war (with the plugin zip still under the lib folder) doesn't put it in the generated war, 
+Instead, running a grails war (with the plugin zip still under the lib folder) doesn't put it in the generated war,
 so should be safe even to keep it there.
 
 
