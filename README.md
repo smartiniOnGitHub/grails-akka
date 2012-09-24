@@ -40,8 +40,8 @@ Documentation
 =============
 
 See the Plugin documentation (sources under src/docs/), or the "live" version here:
-[akka docs](http://smartiniongithub.github.com/grails-akka/)
+[grails-akka docs](http://smartiniongithub.github.com/grails-akka/)
 
 Home Page for the project (and sources) on GitHUB:
-[akka](https://github.com/smartiniOnGitHub/grails-akka/)
+[grails-akka](https://github.com/smartiniOnGitHub/grails-akka/)
 
