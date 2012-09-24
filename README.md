@@ -39,7 +39,8 @@ so should be safe even to keep it there.
 Documentation
 =============
 
-See the Plugin documentation (sources under src/docs/).
+See the Plugin documentation (sources under src/docs/), or the "live" version here:
+[akka docs](http://smartiniongithub.github.com/grails-akka/)
 
 Home Page for the project (and sources) on GitHUB:
 [akka](https://github.com/smartiniOnGitHub/grails-akka/)
