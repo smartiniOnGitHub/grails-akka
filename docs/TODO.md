@@ -19,6 +19,8 @@ http://doc.akka.io/docs/akka/2.0.3/java/untyped-actors.html
         * put exclusions for this in the BuildConfig of the plugin, until I get 0 evicted (in build, compile, and runtime)... ok
         * I commented all the exclusions for now otherwise a compile error will happen ...
           just for reference, but could be the wrong way to do this, so let's see later if/how to fix this
+    + sample usage of Futures:
+http://doc.akka.io/docs/akka/2.0.3/java/futures.html
 
 
 - for release 1.0 or later:
