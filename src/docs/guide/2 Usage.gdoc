@@ -4,7 +4,7 @@ First you need to install the plugin into a Grails application:
 using the recommended way, configure it as a dependency in @BuildConfig.groovy@:
 {code}
 plugins {
-    compile ':akka:0.5'
+    compile ':akka:<plugin version>'
 }
 {code}
 
@@ -22,6 +22,7 @@ grails.servlet.version = "3.0"
 {code}
 
 * Akka 2.x (as specified in plugin descriptor) and related dependencies,
-all downloaded from the Central Maven Repository (that must be enabled), and the Typesafe Maven Repository (defined inside the plugin).
+all downloaded from the Central Maven Repository (that must be enabled),
+and the Typesafe Maven Repository (defined inside the plugin).
 
 

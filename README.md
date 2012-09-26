@@ -45,3 +45,10 @@ See the Plugin documentation (sources under src/docs/), or the "live" version he
 Home Page for the project (and sources) on GitHUB:
 [grails-akka](https://github.com/smartiniOnGitHub/grails-akka/)
 
+
+License
+=======
+
+Licensed under the terms of the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+
