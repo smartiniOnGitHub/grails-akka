@@ -4,6 +4,12 @@ grails-akka - TODO
 TODO
 ----
 
+- for release 0.6 (second public release):
+    + publish the plugin, 
+	+ update generated gdocs on github-pages ...
+	+ then set version to 0.7 (or 0.8) for the next release ...
+
+
 - for release 1.0:
     + verify the info put in readme.md
         * and then, create another test webapp (but not inline here) where to install it, following only readme info, to ensure they are right ...
@@ -24,6 +30,7 @@ http://doc.akka.io/docs/akka/2.0.3/java/futures.html
 
 
 - for release 1.0 or later:
+	+ update dependencies to Akka-2.1.x and Scala-2.10.x ...
     + use some remote actor ...
         * grails-akka-test webapp integration tests:
           call some remote actors (before start its server, maybe with a microkernel application under integration tests, as this) ...
@@ -37,6 +44,7 @@ http://doc.akka.io/docs/akka/2.0.3/java/typed-actors.html
 
 
 - others:
+	+ update dependencies to Java 7 ...
     + enabling scala ...
         * re-enable the creation of scala source folders when installing the plugin in a test webapp ...
         * enable scala compilation and verify if some scala content there is compiled ...
@@ -93,6 +101,8 @@ cls && grails test-app integration: -echoOut
         * ensure LICENSE file is put in root of the generated plugin ... ok
         * add by hand README.md, NOTICE, and RELEASE-NOTES and README if present ... ok
 
+- for release 0.6 (second public release):
+    + update akka to 2.0.4 ... ok
 
 
 ---------------

@@ -1,5 +1,9 @@
 h4. History
 
+* November 2012
+** 0.6 release
+*** Updated Akka to 2.0.4
+
 * September 2012
 ** 0.5 release
 *** First public version of the plugin, with some basic features

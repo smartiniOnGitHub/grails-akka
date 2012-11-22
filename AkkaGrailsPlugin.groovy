@@ -18,7 +18,7 @@
 // import org.apache.log4j.Logger
 
 class AkkaGrailsPlugin {
-    def version = "0.8"
+    def version = "0.6"
     def grailsVersion = "2.0 > *"
     def dependsOn = [:]
     def pluginExcludes = [

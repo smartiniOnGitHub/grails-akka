@@ -26,7 +26,7 @@ grails.project.target.level = 1.6
 // grails.project.work.dir = 'target'
 
 
-def akkaVersion = '2.0.3'
+def akkaVersion = '2.0.4'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
