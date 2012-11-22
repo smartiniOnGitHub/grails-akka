@@ -6,6 +6,6 @@ h4. History
 
 * September 2012
 ** 0.5 release
-*** First public version of the plugin, with some basic features
+*** First public version of the plugin, using Akka-2.0.3, and with some basic features
 *** Advanced features of Akka have not been yet tested/shown here (even under heavy load), but it's in plan for the next release
 *** In Plugin sources under the test folder there there are some initial unit and integration tests, and an inline test webapp
