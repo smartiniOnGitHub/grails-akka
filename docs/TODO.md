@@ -5,8 +5,6 @@ TODO
 ----
 
 - for release 0.6 (second public release):
-    + publish the plugin ...
-	+ update generated gdocs on github-pages ...
 	+ then set version to 0.7 (or 0.8) for the next release ...
 
 
@@ -103,6 +101,8 @@ cls && grails test-app integration: -echoOut
 
 - for release 0.6 (second public release):
     + update akka to 2.0.4 ... ok
+    + publish the plugin ... ok
+	+ update generated gdocs on github-pages ... ok
 
 
 ---------------
