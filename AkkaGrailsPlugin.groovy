@@ -32,7 +32,7 @@ class AkkaGrailsPlugin {
     def description = '''\
 Akka actors integration from Groovy and Java, in a Servlet 3.x environment.
 '''
-    def documentation = "http://grails.org/plugin/akka"
+    def documentation = "http://smartiniongithub.github.com/grails-akka/"
 
     // Extra (optional) plugin metadata
     def license = "APACHE"
