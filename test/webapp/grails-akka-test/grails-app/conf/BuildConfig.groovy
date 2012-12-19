@@ -54,7 +54,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         // compile "org.grails.plugins:spring-security-core:1.2.7.3"
-        // compile "org.grails.plugins:mongodb:1.0.0.GA"
+        // compile "org.grails.plugins:mongodb:1.1.0.GA"
 
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.8.3"
