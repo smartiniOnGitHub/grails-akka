@@ -26,7 +26,7 @@ grails.project.target.level = 1.6
 // grails.project.work.dir = 'target'
 
 
-def akkaVersion = '2.0.4'
+def akkaVersion = '2.0.5'
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -60,7 +60,7 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        build(":release:2.1.0") {
+        build(":release:2.2.0") {
             export = false
         }
     }

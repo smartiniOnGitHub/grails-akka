@@ -1,5 +1,9 @@
 h4. History
 
+* January 2013
+** 0.6.1 release
+*** Updated Akka to 2.0.5
+
 * November 2012
 ** 0.6 release
 *** Updated Akka to 2.0.4

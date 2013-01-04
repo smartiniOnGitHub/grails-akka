@@ -4,11 +4,13 @@ grails-akka - TODO
 TODO
 ----
 
-- for release 0.6 (second public release):
+- for release 0.6.1 (maintenance public release):
+    + publish the plugin ...
 	+ then set version to 0.7 (or 0.8) for the next release ...
 
 
 - for release 1.0:
+	+ verify if add a service to simplify interaction with akka ...
     + verify the info put in readme.md
         * and then, create another test webapp (but not inline here) where to install it, following only readme info, to ensure they are right ...
     + add some long-running actor, for example giving it the delay ...
@@ -103,6 +105,9 @@ cls && grails test-app integration: -echoOut
     + update akka to 2.0.4 ... ok
     + publish the plugin ... ok
 	+ update generated gdocs on github-pages ... ok
+
+- for release 0.6.1 (maintenance public release):
+    + update akka to 2.0.5 ... ok
 
 
 ---------------

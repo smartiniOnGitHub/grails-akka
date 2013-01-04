@@ -12,6 +12,6 @@ Note that some code is more general than required for tests, but only to show so
 h4. Akka documentation
 
 Look at Akka API for Java, usable from Groovy and Java code,
-from here [Akka Java API|http://doc.akka.io/docs/akka/2.0.4/java/]
+from here [Akka Java API|http://doc.akka.io/docs/akka/2.0.5/java/]
 
 
