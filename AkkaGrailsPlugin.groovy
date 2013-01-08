@@ -27,4 +27,8 @@ class AkkaGrailsPlugin {
     def license = "APACHE"
     def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
+
+    def pluginExcludes = [
+        'src/groovy/**'
+    ]
 }
