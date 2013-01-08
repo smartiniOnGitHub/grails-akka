@@ -23,13 +23,12 @@ package grails_akka.message
  * <br/>
  * This code is derived from Akka Samples.
  */
-public class Greeting implements Serializable
+class Greeting implements Serializable
 {
-    public final String who;
+    final String who
 
-    public Greeting(String who)
+    Greeting(String who)
     {
-        this.who = who;
+        this.who = who
     }
-
 }

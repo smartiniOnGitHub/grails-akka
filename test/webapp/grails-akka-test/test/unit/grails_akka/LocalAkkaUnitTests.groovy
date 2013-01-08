@@ -3,7 +3,7 @@
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to you under the Apache License,
- * Version 2.0 (the "License"); you may not use this file except in
+ * Version 2.0 (the "License") you may not use this file except in
  * compliance with the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
@@ -17,23 +17,22 @@
 package grails_akka
 
 import static org.junit.Assert.*
+import grails.test.mixin.TestMixin
+import grails.test.mixin.support.GrailsUnitTestMixin
+import grails_akka.actor.GreetingActor
+import grails_akka.command.ActorCommand
+import grails_akka.message.GenericMessage
+import grails_akka.message.Greeting
+import grails_akka.message.Stop
+import grails_akka.message.Wait
 
-import grails.test.mixin.*
-import grails.test.mixin.support.*
-import org.junit.*
-// import org.junit.rules.*
+import org.junit.Before
+import org.junit.Test
 
-import akka.actor.*
-import akka.routing.*
-import akka.util.Duration
-import akka.testkit.*
-
-// import java.util.concurrent.TimeUnit
-
-import grails_akka.actor.*
-import grails_akka.command.*
-import grails_akka.message.*
-
+import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.Props
+import akka.testkit.TestProbe
 
 /**
  * LocalAkkaUnitTests
@@ -46,16 +45,15 @@ import grails_akka.message.*
 class LocalAkkaUnitTests
 {
     // global actor system for this test class, to reuse it in all test methods here
-    ActorSystem system = null
-    ActorRef    actor  = null
+    ActorSystem system
+    ActorRef    actor
 
     // the supported mode to mock an actor is with something like this:
-    TestProbe probe = null
-    ActorRef  mock  = null
-
+    TestProbe probe
+    ActorRef  mock
 
     @Before
-    public void setUp()
+    void setUp()
     {
         // creates the local actor system
         // system = ActorSystem.apply()
@@ -63,57 +61,42 @@ class LocalAkkaUnitTests
         println("Created Local Actor System instance:  $system")
 
         // get a reference to the greetingActor
-        // actor  = TestActorRef.apply(new Props(GreetingActor.class), system)  // this is the supported way
-        actor = system.actorOf(new Props(GreetingActor.class), "greeting_actor")  // this is my way (not test-specific) ...
+        // actor  = TestActorRef.apply(new Props(GreetingActor), system)  // this is the supported way
+        actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // this is my way (not test-specific) ...
         println("Get Actor Reference to GreetingActor: $actor")
 
 
         // the supported mode to mock an actor is with something like this:
         // mock = TestActorRef.apply(new AbstractFunction0() {
         //     @Override
-        //     public Pi.Worker apply() {
-        //         return new Pi.Worker();
+        //     Pi.Worker apply() {
+        //         return new Pi.Worker()
         //     }
-        // }, system);
+        // }, system)
         // and in any test method then use something like this:
         // probe = TestProbe.apply(system)
         // mock  = probe.ref()
         // mock.tell("Hello", probe.ref())
     }
 
-    @After
-    public void tearDown()
-    {
-        // shutdown the local actor system
-        // if (actor != null) {
-        //     actor.stop()
-        // }
-        // if (system != null) {
-        //     println("Shutting down Local Actor System instance: $system")
-        //     system.shutdown()
-        // }
-    }
-
     @Test
-    // @Test(expected = InstantiationException.class)
+    // @Test(expected = InstantiationException)
     void testClassAvailable()
     {
         log.info "testClassAvailable()"
 
-        def className = null;
-        def classInstance = null;
-
-        className = "akka.actor.ActorSystem"  // abstract, so not instantiable ...
-        shouldFail(java.lang.InstantiationException) {  // more flexible insted of ExpectedException
-            classInstance = Class.forName(className).newInstance();
+        def classInstance
+        def className = "akka.actor.ActorSystem"  // abstract, so not instantiable ...
+        shouldFail(InstantiationException) {  // more flexible insted of ExpectedException
+            classInstance = Class.forName(className).newInstance()
         }
         println("$className instance is: $classInstance")
         // assertNotNull classInstance
         // here I expect an InstantiationException thrown
 
         className = "akka.actor.UntypedActor"  // abstract, so not instantiable ...
-        shouldFail(java.lang.InstantiationException) {  // more flexible insted of ExpectedException
-            classInstance = Class.forName(className).newInstance();
+        shouldFail(InstantiationException) {  // more flexible insted of ExpectedException
+            classInstance = Class.forName(className).newInstance()
         }
         println("$className instance is: $classInstance")
         // assertNotNull classInstance
@@ -131,20 +114,20 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-        // ActorRef actor = system.actorOf(new Props(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+        // ActorRef actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // commented, to reuse the actor reference global in this test class
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a null message
-        actor.tell(null);
+        actor.tell(null)
         assertNotNull actor  // dummy
 
         // send to the greeting actor a Greeting message
-        actor.tell(new Greeting("Test Greeting"));
+        actor.tell(new Greeting("Test Greeting"))
         assertNotNull actor  // dummy
 
         // send to the greeting actor an unknown message
-        actor.tell(new String("Test String"));
+        actor.tell(new String("Test String"))
         assertNotNull actor  // dummy
     }
 
@@ -159,12 +142,12 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-        // ActorRef actor = system.actorOf(new Props(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+        // ActorRef actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // commented, to reuse the actor reference global in this test class
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a sample generic message
-        actor.tell(new GenericMessage<String>("simple generic message with a String"));
+        actor.tell(new GenericMessage<String>("simple generic message with a String"))
         assertNotNull actor  // dummy
     }
 
@@ -180,9 +163,9 @@ class LocalAkkaUnitTests
 
         // send to the greeting actor a Wait message
         long sleepTime = 2000 // msec
-        long startSleep = System.currentTimeMillis();
-        actor.tell(new Wait(sleepTime));
-        long stopSleep = System.currentTimeMillis();
+        long startSleep = System.currentTimeMillis()
+        actor.tell(new Wait(sleepTime))
+        long stopSleep = System.currentTimeMillis()
         long delta = stopSleep - startSleep
         // TODO: enable later and make it working ...
         // assertTrue delta >= sleepTime
@@ -200,15 +183,15 @@ class LocalAkkaUnitTests
         assertNotNull actor
 
         // send to the greeting actor a stop message
-        actor.tell(new Stop());
+        actor.tell(new Stop())
         assertNotNull actor  // dummy
 
         // // send to the greeting actor a shutdown message
-        // actor.tell(new Shutdown());
+        // actor.tell(new Shutdown())
         // assertNotNull actor  // dummy
 
         // send to the greeting actor an unknown message
-        actor.tell(new String("Test String"));
+        actor.tell(new String("Test String"))
         assertNotNull actor  // dummy
         // ok, but note that this actor (after the Shutdown message) will not get this message ...
     }
@@ -235,5 +218,4 @@ class LocalAkkaUnitTests
         cmd2.execute()
         assertNotNull cmd2  // dummy
     }
-
 }

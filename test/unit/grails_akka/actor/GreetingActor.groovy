@@ -16,27 +16,27 @@
  */
 package grails_akka.actor
 
+import grails_akka.message.Greeting
+import grails_akka.message.Shutdown
+import grails_akka.message.Stop
+import grails_akka.message.Wait
 import akka.actor.UntypedActor
-import akka.event.*
-
-import grails_akka.actor.*
-import grails_akka.command.*
-import grails_akka.message.*
-
+import akka.event.Logging
+import akka.event.LoggingAdapter
 
 /**
  * Greeting actor, as a sample.
  * <br/>
  * This code is derived from Akka Samples.
  */
-public class GreetingActor extends UntypedActor
+class GreetingActor extends UntypedActor
 {
     LoggingAdapter log = Logging.getLogger(getContext().system(), this)
 
     @Override
-    public void onReceive(Object message) throws Exception
+    void onReceive(Object message) throws Exception
     {
-        String messageClassName = message?.getClass()?.getName();
+        String messageClassName = message?.getClass()?.getName()
 
         if (message == null)
         {
@@ -84,5 +84,4 @@ public class GreetingActor extends UntypedActor
             unhandled(message)
         }
     }
-
 }

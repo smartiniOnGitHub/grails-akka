@@ -15,37 +15,24 @@
  * limitations under the License.
  */
 
-// grails.servlet.version = "3.0"  // verify if makes sense to enable this even here ...
-grails.project.class.dir = "target/classes"
+grails.project.work.dir = "target"
 // grails.project.docs.output.dir = 'docs/manual'
-grails.project.test.class.dir = "target/test-classes"
-grails.project.test.reports.dir = "target/test-reports"
 grails.project.source.level = 1.6
 grails.project.target.level = 1.6
-// grails.project.war.file = "target/${appName}-${appVersion}.war"
-// grails.project.work.dir = 'target'
-
 
 def akkaVersion = '2.0.5'
 
 grails.project.dependency.resolution = {
-    // inherit Grails' default dependencies
-    inherits("global") {
-        // excludes 'ehcache'  // uncomment to disable ehcache
-    }
 
-    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    inherits 'global'
+    log 'warn'
 
     repositories {
         grailsCentral()
-        //mavenCentral()
-        //mavenLocal()
         mavenRepo "http://repo.typesafe.com/typesafe/releases/"
     }
 
     dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
         def excludes = {
             // disable excludes, or compile errors will happen ...
             // // exclude, to avoid version conflict
@@ -64,5 +51,4 @@ grails.project.dependency.resolution = {
             export = false
         }
     }
-
 }

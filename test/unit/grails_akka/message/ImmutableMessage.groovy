@@ -23,23 +23,22 @@ package grails_akka.message
  * <br/>
  * This code is derived from Akka Samples.
  */
-public class ImmutableMessage
+class ImmutableMessage
 {
-    private final int sequenceNumber;
-    private final List<String> values;
+    private final int sequenceNumber
+    private final List<String> values
 
-    public ImmutableMessage(int sequenceNumber, List<String> values)
+    ImmutableMessage(int sequenceNumber, List<String> values)
     {
-        this.sequenceNumber = sequenceNumber;
-        this.values         = Collections.unmodifiableList(new ArrayList<String>(values));
+        this.sequenceNumber = sequenceNumber
+        this.values         = Collections.unmodifiableList(new ArrayList<String>(values))
     }
 
-    public int getSequenceNumber() {
-        return sequenceNumber;
+    int getSequenceNumber() {
+        return sequenceNumber
     }
 
-    public List<String> getValues() {
-        return values;
+    List<String> getValues() {
+        return values
     }
-
 }

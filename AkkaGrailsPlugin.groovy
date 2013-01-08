@@ -15,55 +15,16 @@
  * limitations under the License.
  */
 
-// import org.apache.log4j.Logger
-
 class AkkaGrailsPlugin {
     def version = "0.6.1"
     def grailsVersion = "2.0 > *"
-    def dependsOn = [:]
-    def pluginExcludes = [
-        "grails-app/views/error.gsp"
-        // , "src/docs/"
-    ]
-
     def title = "Akka Integration"
     def author = "Sandro Martini"
     def authorEmail = "sandro.martini@gmail.com"
-    def description = '''\
-Akka actors integration from Groovy and Java, in a Servlet 3.x environment.
-'''
+    def description = 'Akka actors integration from Groovy and Java, in a Servlet 3.x environment'
     def documentation = "http://smartiniongithub.github.com/grails-akka/"
 
-    // Extra (optional) plugin metadata
     def license = "APACHE"
-    // def organization = [ name: "MartinS", url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
-    // def developers = [ [ name: "other developer", email: "other.developer@my-company.com" ]]
     def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
-
-
-    // private Logger log = Logger.getLogger('grails.plugin.akka.AkkaGrailsPlugin')
-
-
-    def doWithWebDescriptor = { xml ->
-    }
-
-    def doWithSpring = {
-    }
-
-    def doWithDynamicMethods = { ctx ->
-    }
-
-    def doWithApplicationContext = { applicationContext ->
-    }
-
-    def onChange = { event ->
-    }
-
-    def onConfigChange = { event ->
-    }
-
-    def onShutdown = { event ->
-    }
-
 }

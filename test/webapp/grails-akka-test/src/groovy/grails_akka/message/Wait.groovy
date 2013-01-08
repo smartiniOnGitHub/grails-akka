@@ -16,8 +16,10 @@
  */
 package grails_akka.message
 
-import groovy.transform.*
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
+import org.springframework.util.Assert
 
 /**
  * Waiting message, as a sample.
@@ -25,19 +27,14 @@ import groovy.transform.*
  * Used a kind of message to send to actors.
  */
 @EqualsAndHashCode
-// @Immutable
 @ToString
-public class Wait implements Serializable
+class Wait implements Serializable
 {
-    final long msec;
+    final long msec
 
-    public Wait(long msec)
+    Wait(long msec)
     {
-        // this.msec = (msec < 0) ? 0l : msec;
-        if (msec < 0)
-            throw new IllegalArgumentException("Waiting time must be 0 or positive.");
-
-        this.msec = msec;
+        Assert.isTrue(msec >= 0, "Waiting time must be 0 or positive.")
+        this.msec = msec
     }
-
 }

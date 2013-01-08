@@ -23,11 +23,6 @@ package grails_akka.message
  * <br/>
  * This code is derived from Akka Samples.
  */
-public abstract class BaseMessage implements Serializable
+abstract class BaseMessage implements Serializable
 {
-
-    public BaseMessage()
-    {
-    }
-
 }
