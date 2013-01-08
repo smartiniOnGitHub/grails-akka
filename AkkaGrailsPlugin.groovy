@@ -29,6 +29,7 @@ class AkkaGrailsPlugin {
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
 
     def pluginExcludes = [
+        'src/docs/**',
         'src/groovy/**'
     ]
 }
