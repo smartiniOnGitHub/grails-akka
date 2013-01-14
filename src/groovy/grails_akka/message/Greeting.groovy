@@ -14,20 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka.message
 
-import grails.util.Environment
-
-import javax.servlet.ServletContext
-
-class BootStrap
+/**
+ * Greeting message, as a sample.
+ * <br/>
+ * Used a kind of message to send to actors.
+ * <br/>
+ * This code is derived from Akka Samples.
+ */
+class Greeting implements Serializable
 {
-    def grailsApplication
+    final String who
 
-    def init = { ServletContext sc ->
-        println "Bootstrap running in Environment " + Environment.current
-        println """
-Remember that to test the plugin (inline here),
-this webapp (other than the usual run-app) could be run even with with run-war ...
-"""
+    Greeting(String who)
+    {
+        this.who = who
     }
+
 }
