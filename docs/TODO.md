@@ -4,9 +4,13 @@ grails-akka - TODO
 TODO
 ----
 
-- for release 0.6.1 (maintenance public release):
-    + publish the plugin ...
-	+ then set version to 0.7 (or 0.8) for the next release ...
+- for release 0.6.2 (maintenance public release):
+	+ generate a new (empty grails webapp), and check if the (new, lighter) version of the plugin is good, 
+	  for example copying test classes by the usual plugin test webapp ...
+
+- for release 0.6.5 (maintenance public release):
+	+ verify if add an akkaService ... but check how to configure it from outside
+	+ do other tests and small adjustments ...
 
 
 - for release 1.0:
@@ -108,6 +112,13 @@ cls && grails test-app integration: -echoOut
 
 - for release 0.6.1 (maintenance public release):
     + update akka to 2.0.5 ... ok
+    + publish the plugin, and then update generated gdocs on github-pages ... ok
+
+- for release 0.6.2 (maintenance public release):
+    + accept pull request (for cleanup) from Burt ... ok
+    + rename package of test classes and exclude it from packaging ... ok
+	+ run many tests on plugin, and the test webapp ... ok
+    + publish the plugin, and then update generated gdocs on github-pages ... ok
 
 
 ---------------

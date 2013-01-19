@@ -3,7 +3,7 @@
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to you under the Apache License,
- * Version 2.0 (the "License") you may not use this file except in
+ * Version 2.0 (the "License"); you may not use this file except in
  * compliance with the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
@@ -16,15 +16,14 @@
  */
 package grails_akka
 
-import static org.junit.Assert.*
 import grails.test.mixin.TestMixin
 import grails.test.mixin.support.GrailsUnitTestMixin
-import grails_akka.actor.GreetingActor
-import grails_akka.command.ActorCommand
-import grails_akka.message.GenericMessage
-import grails_akka.message.Greeting
-import grails_akka.message.Stop
-import grails_akka.message.Wait
+import grails_akka_test.actor.GreetingActor
+import grails_akka_test.command.ActorCommand
+import grails_akka_test.message.GenericMessage
+import grails_akka_test.message.Greeting
+import grails_akka_test.message.Stop
+import grails_akka_test.message.Wait
 
 import org.junit.Before
 import org.junit.Test

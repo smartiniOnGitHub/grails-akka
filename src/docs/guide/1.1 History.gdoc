@@ -1,6 +1,10 @@
 h4. History
 
 * January 2013
+** 0.6.2 release
+*** Cleanup of plugin (removed unnecessary files, and other small adjustments)
+
+* January 2013
 ** 0.6.1 release
 *** Updated Akka to 2.0.5
 

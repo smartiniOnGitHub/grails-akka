@@ -17,7 +17,7 @@
 package grails_akka
 
 import static org.junit.Assert.*
-import grails_akka.actor.GreetingActor
+import grails_akka_test.actor.GreetingActor
 
 import org.junit.Before
 import org.junit.Test

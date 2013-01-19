@@ -14,22 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class AkkaGrailsPlugin {
-    def version = "0.6.2"
-    def grailsVersion = "2.0 > *"
-    def title = "Akka Integration"
-    def author = "Sandro Martini"
-    def authorEmail = "sandro.martini@gmail.com"
-    def description = 'Akka actors integration from Groovy and Java, in a Servlet 3.x environment'
-    def documentation = "http://smartiniongithub.github.com/grails-akka/"
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
-    def license = "APACHE"
-    def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
-    def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
+import org.springframework.util.Assert
 
-    def pluginExcludes = [
-        'src/docs/**',
-        'src/groovy/grails_akka_test/**'
-    ]
+/**
+ * Waiting message, as a sample.
+ * <br/>
+ * Used a kind of message to send to actors.
+ */
+@EqualsAndHashCode
+@ToString
+class Wait implements Serializable
+{
+    final long msec
+
+    Wait(long msec)
+    {
+        Assert.isTrue(msec >= 0, "Waiting time must be 0 or positive.")
+        this.msec = msec
+    }
 }

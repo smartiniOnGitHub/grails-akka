@@ -17,13 +17,14 @@
 package grails_akka
 
 import static org.junit.Assert.*
-import grails_akka.actor.GreetingActor
-import grails_akka.command.ActorCommand
-import grails_akka.message.GenericMessage
-import grails_akka.message.Greeting
-import grails_akka.message.Stop
-import grails_akka.message.Wait
+import grails_akka_test.actor.GreetingActor
+import grails_akka_test.command.ActorCommand
+import grails_akka_test.message.GenericMessage
+import grails_akka_test.message.Greeting
+import grails_akka_test.message.Stop
+import grails_akka_test.message.Wait
 
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
@@ -72,6 +73,19 @@ class LocalAkkaIntegrationTests
         // probe = TestProbe.apply(system)
         // mock  = probe.ref()
         // mock.tell("Hello", probe.ref())
+    }
+
+    @After
+    void tearDown()
+    {
+        // shutdown the local actor system
+        // if (actor != null) {
+        //     actor.stop()
+        // }
+        // if (system != null) {
+        //     println("Shutting down Local Actor System instance: $system")
+        //     system.shutdown()
+        // }
     }
 
     @Test(expected = InstantiationException)

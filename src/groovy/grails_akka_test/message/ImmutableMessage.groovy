@@ -14,22 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class AkkaGrailsPlugin {
-    def version = "0.6.2"
-    def grailsVersion = "2.0 > *"
-    def title = "Akka Integration"
-    def author = "Sandro Martini"
-    def authorEmail = "sandro.martini@gmail.com"
-    def description = 'Akka actors integration from Groovy and Java, in a Servlet 3.x environment'
-    def documentation = "http://smartiniongithub.github.com/grails-akka/"
+/**
+ * ImmutableMessage, as a sample.
+ * <br/>
+ * Used a kind of message to send to actors.
+ * <br/>
+ * This code is derived from Akka Samples.
+ */
+class ImmutableMessage
+{
+    private final int sequenceNumber
+    private final List<String> values
 
-    def license = "APACHE"
-    def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
-    def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
+    ImmutableMessage(int sequenceNumber, List<String> values)
+    {
+        this.sequenceNumber = sequenceNumber
+        this.values         = Collections.unmodifiableList(new ArrayList<String>(values))
+    }
 
-    def pluginExcludes = [
-        'src/docs/**',
-        'src/groovy/grails_akka_test/**'
-    ]
+    int getSequenceNumber() {
+        return sequenceNumber
+    }
+
+    List<String> getValues() {
+        return values
+    }
 }
