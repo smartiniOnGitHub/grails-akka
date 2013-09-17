@@ -16,7 +16,7 @@
  */
 
 class AkkaGrailsPlugin {
-    def version = "0.6.2"
+    def version = "0.6.5"
     def grailsVersion = "2.0 > *"
     def title = "Akka Integration"
     def author = "Sandro Martini"
@@ -29,7 +29,13 @@ class AkkaGrailsPlugin {
     def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
 
     def pluginExcludes = [
+		'**/Thumbs.db',
         'src/docs/**',
         'src/groovy/grails_akka_test/**'
     ]
+
+    def developers = [
+        [name: "Sandro Martini", email: "sandro.martini@gmail.com"]
+    ]
+
 }

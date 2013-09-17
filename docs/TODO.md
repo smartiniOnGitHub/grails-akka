@@ -4,11 +4,9 @@ grails-akka - TODO
 TODO
 ----
 
-- for release 0.6.2 (maintenance public release):
+- for release 0.6.5 (maintenance public release):
 	+ generate a new (empty grails webapp), and check if the (new, lighter) version of the plugin is good, 
 	  for example copying test classes by the usual plugin test webapp ...
-
-- for release 0.6.5 (maintenance public release):
 	+ verify if add an akkaService ... but check how to configure it from outside
 	+ do other tests and small adjustments ...
 
@@ -24,17 +22,17 @@ TODO
         * do it in the test webapp, because probably in the plugin it would be hard to have it so much generalized ...
     + fix TODO in code ...
     + sample usage of akka poison pill messages:
-http://doc.akka.io/docs/akka/2.0.3/java/untyped-actors.html
+http://doc.akka.io/docs/akka/2.0.5/java/untyped-actors.html
     + verify if/how to exclude the transitivity of scala, to avoid dependency errors in the grails dependency-report ...
         * put exclusions for this in the BuildConfig of the plugin, until I get 0 evicted (in build, compile, and runtime)... ok
         * I commented all the exclusions for now otherwise a compile error will happen ...
           just for reference, but could be the wrong way to do this, so let's see later if/how to fix this
     + sample usage of Futures:
-http://doc.akka.io/docs/akka/2.0.3/java/futures.html
+http://doc.akka.io/docs/akka/2.0.5/java/futures.html
 
 
 - for release 1.0 or later:
-	+ update dependencies to Akka-2.1.x and Scala-2.10.x ...
+	+ update dependencies to Akka-2.2.x and Scala-2.10.x ...
     + use some remote actor ...
         * grails-akka-test webapp integration tests:
           call some remote actors (before start its server, maybe with a microkernel application under integration tests, as this) ...
@@ -44,11 +42,11 @@ http://doc.akka.io/docs/akka/2.0.3/java/futures.html
     + update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
         * add by hand CHANGES.md with inside the full history of changes ... no, better: put this in plugin docs, in gdoc format
     + sample usage of akka typed actors:
-http://doc.akka.io/docs/akka/2.0.3/java/typed-actors.html
+http://doc.akka.io/docs/akka/2.0.5/java/typed-actors.html
 
 
-- others:
-	+ update dependencies to Java 7 ...
+- others (later):
+	+ update dependencies to Java 7 (when required by Akka/Scala) ...
     + enabling scala ...
         * re-enable the creation of scala source folders when installing the plugin in a test webapp ...
         * enable scala compilation and verify if some scala content there is compiled ...
@@ -69,16 +67,16 @@ DONE
 cls && grails test-app unit: -echoOut
 cls && grails test-app integration: -echoOut
 
-- try with some local actor, as seen here: http://doc.akka.io/docs/akka/2.0.3/java/untyped-actors.html
-    + ok (but without a sepcific configuration given to it),
+- try with some local actor, as seen here: http://doc.akka.io/docs/akka/2.0.5/java/untyped-actors.html
+    + ok (but without a specific configuration given to it),
       both in unit and integration tests (but had to duplicate test classes, to not put in the plugin, to have it cleaner) ...
 
 - make messages classes more Groovy-like ... ok
     + add some Groovy-specific extensions (annotations, etc), to show how to simplify code ... ok
 
 - add sample of (better) testing of actors and logic used inside them using akka TestKit, as seen here:
-  http://doc.akka.io/docs/akka/2.1-M2/java/testing.html
-  http://doc.akka.io/docs/akka/2.0.3/scala/testing.html
+  http://doc.akka.io/docs/akka/2.2.1/java/testing.html
+  http://doc.akka.io/docs/akka/2.0.5/scala/testing.html
 
 - move test classes in subpackages by type (actor, command, message) ... ok
 - copy classes used by tests (actor, command, message) even under the test webapp, to test (later) real calls to them from there ... ok
@@ -119,6 +117,9 @@ cls && grails test-app integration: -echoOut
     + rename package of test classes and exclude it from packaging ... ok
 	+ run many tests on plugin, and the test webapp ... ok
     + publish the plugin, and then update generated gdocs on github-pages ... ok
+
+- for release 0.6.5 (maintenance public release):
+    + add Thumbs.db in pluginExcludes ... ok
 
 
 ---------------
