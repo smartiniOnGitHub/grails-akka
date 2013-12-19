@@ -1,5 +1,11 @@
 h4. History
 
+* December 2013
+** 0.10.3 release
+*** Updated to Akka-2.2.3 (aligned with Scala-2.10.3)
+*** Last release for Grails-2.0.x
+*** Small updates/cleanup
+
 * January 2013
 ** 0.6.2 release
 *** Cleanup of plugin (removed unnecessary files, and other small adjustments)
