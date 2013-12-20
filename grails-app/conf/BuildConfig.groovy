@@ -21,6 +21,7 @@ grails.project.source.level = 1.6
 grails.project.target.level = 1.6
 
 def akkaVersion = '2.2.3'
+def scalaSuffixVersion = '_2.10'
 
 grails.project.dependency.resolution = {
 
@@ -29,7 +30,7 @@ grails.project.dependency.resolution = {
 
     repositories {
         grailsCentral()
-        mavenRepo "http://repo.typesafe.com/typesafe/releases/"
+        mavenCentral()
     }
 
     dependencies {
@@ -42,8 +43,11 @@ grails.project.dependency.resolution = {
             // transitive = false
         }
 
-        compile("com.typesafe.akka:akka-actor:$akkaVersion", "com.typesafe.akka:akka-remote:$akkaVersion", excludes)
-        test("com.typesafe.akka:akka-testkit:$akkaVersion", excludes)
+        compile("com.typesafe.akka:akka-actor$scalaSuffixVersion:$akkaVersion", 
+			"com.typesafe.akka:akka-remote$scalaSuffixVersion:$akkaVersion", 
+			excludes
+		)
+        test("com.typesafe.akka:akka-testkit$scalaSuffixVersion:$akkaVersion", excludes)
     }
 
     plugins {
