@@ -22,7 +22,6 @@ grails.servlet.version = "3.0"
 {code}
 
 * Akka 2.x (as specified in plugin descriptor) and related dependencies,
-all downloaded from the Central Maven Repository (that must be enabled),
-and the Typesafe Maven Repository (defined inside the plugin).
+all downloaded from the Central Maven Repository (that must be enabled).
 
 
