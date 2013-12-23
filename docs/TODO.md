@@ -127,6 +127,7 @@ cls && grails test-app integration: -echoOut
 	- update to Akka-2.2.3 (aligned with Scala-2.10.2), so this strange number in the plugin release ... ok
 	- verify if add an akkaService ... but check how to configure it from outside ... ok but later
 	- do other tests and small adjustments ... ok
+	- removed the Typesafe Maven repository (no more needed) ... ok
 
 
 ---------------
