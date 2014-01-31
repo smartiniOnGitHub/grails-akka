@@ -5,6 +5,11 @@ TODO
 ----
 
 - for release 0.10.3 (maintenance public release):
+	- updates for Akka-2.2.3 started (see LocalAkkaUnitTests under test webapp, unit tests):
+		- make it work, and then copy/update related classes (under integration in the test webapp),
+		  and important even in the plugin (if any to fix/update) ...
+		- to run only unit tests with output use (from the root folder of the test webapp: ... ok
+		  grails test-app unit: -echoOut
 	- fix tests (make them work) both for the plugin, and for the test webapp ...
     - update Groovy doc files ...
 

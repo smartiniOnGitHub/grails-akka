@@ -25,6 +25,8 @@ import grails_akka_test.message.Greeting
 import grails_akka_test.message.Stop
 import grails_akka_test.message.Wait
 
+import org.junit.BeforeClass
+import org.junit.AfterClass
 import org.junit.Before
 import org.junit.Test
 
@@ -44,24 +46,36 @@ import akka.testkit.TestProbe
 class LocalAkkaUnitTests
 {
     // global actor system for this test class, to reuse it in all test methods here
-    ActorSystem system
+    static ActorSystem system  // verify if static is good only for tests ...
     ActorRef    actor
 
     // the supported mode to mock an actor is with something like this:
     TestProbe probe
     ActorRef  mock
 
+
+	@BeforeClass
+	public static void setup() {
+		system = ActorSystem.create();
+	}
+
+	@AfterClass
+	public static void teardown() {
+		// JavaTestKit.shutdownActorSystem(system);  // ok, but JavaTestKit must be resolved in dependencies to have this enabled
+		// system = null;
+	}
+
     @Before
     void setUp()
     {
         // creates the local actor system
-        // system = ActorSystem.apply()
-        system = ActorSystem.create("LocalActorSystem")
+        // system = ActorSystem.create("LocalActorSystem")  // ok but here (it's a Unit Test) I get the reference to Akka System in the @BeforeClass
         println("Created Local Actor System instance:  $system")
 
         // get a reference to the greetingActor
-        // actor  = TestActorRef.apply(new Props(GreetingActor), system)  // this is the supported way
-        actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // this is my way (not test-specific) ...
+		// final Props props = Props.create(GreetingActor.class);  // opt, could be used in getting actor reference in the following statements
+        // actor  = TestActorRef.create(system, Props.create(GreetingActor.class), "greeting_actor")  // this is the supported way for testing actors
+        actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // this is my way (not test-specific) ...
         println("Get Actor Reference to GreetingActor: $actor")
 
 
@@ -86,7 +100,7 @@ class LocalAkkaUnitTests
 
         def classInstance
         def className = "akka.actor.ActorSystem"  // abstract, so not instantiable ...
-        shouldFail(InstantiationException) {  // more flexible insted of ExpectedException
+        shouldFail(InstantiationException) {  // more flexible instead of ExpectedException
             classInstance = Class.forName(className).newInstance()
         }
         println("$className instance is: $classInstance")
@@ -94,7 +108,7 @@ class LocalAkkaUnitTests
         // here I expect an InstantiationException thrown
 
         className = "akka.actor.UntypedActor"  // abstract, so not instantiable ...
-        shouldFail(InstantiationException) {  // more flexible insted of ExpectedException
+        shouldFail(InstantiationException) {  // more flexible instead of ExpectedException
             classInstance = Class.forName(className).newInstance()
         }
         println("$className instance is: $classInstance")
@@ -113,8 +127,8 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-        // ActorRef actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // commented, to reuse the actor reference global in this test class
-        println("Actor Reference instance is: $actor")
+        // ActorRef actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+		println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a null message
@@ -141,7 +155,7 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-        // ActorRef actor = system.actorOf(new Props(GreetingActor), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+        // ActorRef actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 

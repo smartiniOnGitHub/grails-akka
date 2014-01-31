@@ -21,7 +21,7 @@ import akka.event.Logging
 import akka.event.LoggingAdapter
 
 /**
- * Abstract base actor class, to use (when desired) as base class for all other messages here.
+ * Abstract base actor class, to use (when desired) as base class for all other actors here.
  */
 abstract class BaseActor extends UntypedActor
 {
