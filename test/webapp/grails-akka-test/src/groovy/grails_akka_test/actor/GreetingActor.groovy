@@ -20,7 +20,12 @@ import grails_akka_test.message.Greeting
 import grails_akka_test.message.Shutdown
 import grails_akka_test.message.Stop
 import grails_akka_test.message.Wait
-import akka.actor.UntypedActor
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
+import akka.testkit.JavaTestKit;
+import scala.concurrent.duration.Duration;
 import akka.event.Logging
 import akka.event.LoggingAdapter
 
@@ -32,6 +37,9 @@ import akka.event.LoggingAdapter
 class GreetingActor extends UntypedActor
 {
     LoggingAdapter log = Logging.getLogger(getContext().system(), this)
+
+	ActorRef target = null;
+
 
     @Override
     void onReceive(Object message) throws Exception
@@ -77,7 +85,11 @@ class GreetingActor extends UntypedActor
             // getContext.getSystem().getScheduler().scheduleOnce(sleep, sender, "Done")
             long stopSleep = System.currentTimeMillis()
             log.info("Wait: " + "End Waiting, after " + (stopSleep - startSleep) + " milliseconds.")
-        }
+         } else if (message instanceof ActorRef) {
+            log.info("$messageClassName: Message from an ActorRef, now reply to it ...")
+			target = (ActorRef) message;
+			getSender().tell("done", getSelf());
+		}
         else
         {
             log.warning("Unknown message type $messageClassName, contents: \"" + message?.toString() + "\"")

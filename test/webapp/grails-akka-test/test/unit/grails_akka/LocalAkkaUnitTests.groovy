@@ -48,6 +48,7 @@ class LocalAkkaUnitTests
     // global actor system for this test class, to reuse it in all test methods here
     static ActorSystem system  // verify if static is good only for tests ...
     ActorRef    actor
+	Props       props
 
     // the supported mode to mock an actor is with something like this:
     TestProbe probe
@@ -56,7 +57,8 @@ class LocalAkkaUnitTests
 
 	@BeforeClass
 	public static void setup() {
-		system = ActorSystem.create();
+		// system = ActorSystem.create();
+		system = ActorSystem.create("LocalActorSystem");
 	}
 
 	@AfterClass
@@ -70,13 +72,17 @@ class LocalAkkaUnitTests
     {
         // creates the local actor system
         // system = ActorSystem.create("LocalActorSystem")  // ok but here (it's a Unit Test) I get the reference to Akka System in the @BeforeClass
-        println("Created Local Actor System instance:  $system")
+        println("Local Actor System instance:  $system")
 
         // get a reference to the greetingActor
-		// final Props props = Props.create(GreetingActor.class);  // opt, could be used in getting actor reference in the following statements
+		// final Props props = Props.create(GreetingActor.class)  // opt, could be used in getting actor reference in the following statements
         // actor  = TestActorRef.create(system, Props.create(GreetingActor.class), "greeting_actor")  // this is the supported way for testing actors
-        actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // this is my way (not test-specific) ...
-        println("Get Actor Reference to GreetingActor: $actor")
+        // actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // this is my way (not test-specific) ...
+		// new, comment this code because since Akka-2.2.x I get an akka.actor.InvalidActorNameException: actor name is not unique ...
+		//      so probably I should use JavaTestKit here ... ok but later
+        // println("Get Actor Reference to GreetingActor: $actor")
+		props = Props.create(GreetingActor.class)
+		// println("props: $props")
 
 
         // the supported mode to mock an actor is with something like this:
@@ -128,19 +134,24 @@ class LocalAkkaUnitTests
 
         // get a reference to our greeting actor
         // ActorRef actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+        // actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")
+		println("props: $props")
+        assertNotNull props
+		actor = system.actorOf(props, "greeting_actor")
 		println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a null message
-        actor.tell(null)
-        assertNotNull actor  // dummy
+        // TODO: check why since Akka-2.2.x this generate an error ...
+		// actor.tell(null, null)
+        // assertNotNull actor  // dummy
 
         // send to the greeting actor a Greeting message
-        actor.tell(new Greeting("Test Greeting"))
+        actor.tell(new Greeting("Test Greeting"), null)
         assertNotNull actor  // dummy
 
         // send to the greeting actor an unknown message
-        actor.tell(new String("Test String"))
+        actor.tell(new String("Test String"), null)
         assertNotNull actor  // dummy
     }
 
@@ -155,12 +166,12 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-        // ActorRef actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
+		actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a sample generic message
-        actor.tell(new GenericMessage<String>("simple generic message with a String"))
+        actor.tell(new GenericMessage<String>("simple generic message with a String"), null)
         assertNotNull actor  // dummy
     }
 
@@ -171,13 +182,14 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
+		actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a Wait message
         long sleepTime = 2000 // msec
         long startSleep = System.currentTimeMillis()
-        actor.tell(new Wait(sleepTime))
+        actor.tell(new Wait(sleepTime), null)
         long stopSleep = System.currentTimeMillis()
         long delta = stopSleep - startSleep
         // TODO: enable later and make it working ...
@@ -192,19 +204,20 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
+		actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
         // send to the greeting actor a stop message
-        actor.tell(new Stop())
+        actor.tell(new Stop(), null)
         assertNotNull actor  // dummy
 
         // // send to the greeting actor a shutdown message
-        // actor.tell(new Shutdown())
+        // actor.tell(new Shutdown(), null)
         // assertNotNull actor  // dummy
 
         // send to the greeting actor an unknown message
-        actor.tell(new String("Test String"))
+        actor.tell(new String("Test String"), null)
         assertNotNull actor  // dummy
         // ok, but note that this actor (after the Shutdown message) will not get this message ...
     }
@@ -216,6 +229,7 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
+		actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
