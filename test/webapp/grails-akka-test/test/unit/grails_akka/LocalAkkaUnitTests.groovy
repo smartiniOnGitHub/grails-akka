@@ -142,7 +142,7 @@ class LocalAkkaUnitTests
         assertNotNull actor
 
         // send to the greeting actor a null message
-        // TODO: check why since Akka-2.2.x this generate an error ...
+        // TODO: since Akka-2.2.x this generate an error, so handle/check the (expected failure) ...
 		// actor.tell(null, null)
         // assertNotNull actor  // dummy
 
