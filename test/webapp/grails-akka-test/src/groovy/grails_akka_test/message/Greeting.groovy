@@ -19,7 +19,7 @@ package grails_akka_test.message
 /**
  * Greeting message, as a sample.
  * <br/>
- * Used a kind of message to send to actors.
+ * Used as kind of message to send to actors.
  * <br/>
  * This code is derived from Akka Samples.
  */

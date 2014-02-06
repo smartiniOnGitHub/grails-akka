@@ -47,7 +47,7 @@ class LocalAkkaUnitTests
 {
     // global actor system for this test class, to reuse it in all test methods here
     static ActorSystem system  // verify if static is good only for tests ...
-    ActorRef    actor
+    // ActorRef    actor
 	Props       props
 
     // the supported mode to mock an actor is with something like this:
@@ -84,18 +84,6 @@ class LocalAkkaUnitTests
 		props = Props.create(GreetingActor.class)
 		// println("props: $props")
 
-
-        // the supported mode to mock an actor is with something like this:
-        // mock = TestActorRef.apply(new AbstractFunction0() {
-        //     @Override
-        //     Pi.Worker apply() {
-        //         return new Pi.Worker()
-        //     }
-        // }, system)
-        // and in any test method then use something like this:
-        // probe = TestProbe.apply(system)
-        // mock  = probe.ref()
-        // mock.tell("Hello", probe.ref())
     }
 
     @Test
@@ -137,7 +125,7 @@ class LocalAkkaUnitTests
         // actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")
 		println("props: $props")
         assertNotNull props
-		actor = system.actorOf(props, "greeting_actor")
+		ActorRef actor = system.actorOf(props, "greeting_actor")
 		println("Actor Reference instance is: $actor")
         assertNotNull actor
 
@@ -166,7 +154,7 @@ class LocalAkkaUnitTests
         assertNotNull system
 
         // get a reference to our greeting actor
-		actor = system.actorOf(props, "greeting_actor")
+		ActorRef actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
@@ -182,7 +170,7 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
-		actor = system.actorOf(props, "greeting_actor")
+		ActorRef actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
@@ -204,7 +192,7 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
-		actor = system.actorOf(props, "greeting_actor")
+		ActorRef actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 
@@ -229,7 +217,7 @@ class LocalAkkaUnitTests
 
         println("Actor System    instance is: $system")
         assertNotNull system
-		actor = system.actorOf(props, "greeting_actor")
+		ActorRef actor = system.actorOf(props, "greeting_actor")
         println("Actor Reference instance is: $actor")
         assertNotNull actor
 

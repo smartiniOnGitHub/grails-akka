@@ -24,7 +24,7 @@ import org.springframework.util.Assert
 /**
  * Waiting message, as a sample.
  * <br/>
- * Used a kind of message to send to actors.
+ * Used as kind of message to send to actors.
  */
 @EqualsAndHashCode
 @ToString

@@ -38,7 +38,19 @@ class GreetingActor extends UntypedActor
 {
     LoggingAdapter log = Logging.getLogger(getContext().system(), this)
 
-	ActorRef target = null;
+	ActorRef target = null
+
+	// referencing another actor, for sample
+	private ActorRef otherActor = null  // getContext().actorOf(new Props(OtherActor.class), "other_actor")
+
+
+	public GreetingActor() {
+	}
+
+	// new, add a new version of the constructor with a reference to the otherActor, so now I must define even the standard (no arg) constructor ...
+	public GreetingActor(ActorRef otherActor) {
+		this.otherActor = otherActor;
+	}
 
 
     @Override

@@ -19,7 +19,7 @@ package grails_akka_test.message
 /**
  * Shutdown message, as a sample.
  * <br/>
- * Used a kind of message to send to actors.
+ * Used as kind of message to send to actors.
  */
 class Shutdown extends BaseMessage
 {
