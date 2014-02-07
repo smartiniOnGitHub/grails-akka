@@ -4,21 +4,13 @@ grails-akka - TODO
 TODO
 ----
 
-- for release 0.10.3 (maintenance public release):
-	- updates for Akka-2.2.3 started (see LocalAkkaUnitTests under test webapp, unit tests):
-		- make it work, and then copy/update related classes (under integration in the test webapp),
-		  and important even in the plugin (if any to fix/update) ...
-		- to run only unit tests with output use (from the root folder of the test webapp: ... ok
-		  grails test-app unit: -echoOut
-	- fix tests (make them work) both for the plugin, and for the test webapp ...
-    - update Groovy doc files ...
-
 - for release 1.0:
 	- update to Grails-2.2.x the plugin ...
 	- update to Grails-2.2.x the test webapp (and resources:1.2.1, etc) ...
-	- verify if publish even other akka modules ...
-	- verify if add a service to simplify interaction with akka (akkaService) ...
-        - do it in the test webapp, because probably in the plugin it would be hard to have it so much generalized ...
+	- verify if publish even other akka modules ... probably not
+	- create the akkaSystem in a Servlet (or other more Grails-related), but verify if only in the test webapp ...
+	- create an akkaService to simplify interaction with akka (akkaService), but verify if only in the test webapp ...
+	- use akkaSystem and akkaService directly from a sample Controller in the test webapp ...
 	- add more tests
     - add some long-running actor, for example giving it the delay ...
         - ok, but up to now it doesn't seem to block execution for the given delay ... verify better, to make it work
@@ -38,18 +30,19 @@ http://doc.akka.io/docs/akka/2.2.3/java/untyped-actors.html
 http://doc.akka.io/docs/akka/2.2.3/java/futures.html
 
 
-- for release 1.0 or later:
-	+ update dependencies to Akka-2.2.x and Scala-2.10.x ...
-    + use some remote actor ...
+- later:
+	- update dependencies to Akka-2.3.x and Scala-2.10.x ...
+    - use some remote actor ...
         * grails-akka-test webapp integration tests:
           call some remote actors (before start its server, maybe with a microkernel application under integration tests, as this) ...
-    + make it load a config file from the classpath,
+    - make it load a config file from the classpath,
       maybe with a dedicated key under Config.grails (in the webapp or in the plugin ? or in both ?), or using grails.config.locations ...
         * use sample conf files for Java and put under integration tests root folder, then try to use them
-    + update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
+    - update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
         * add by hand CHANGES.md with inside the full history of changes ... no, better: put this in plugin docs, in gdoc format
-    + sample usage of akka typed actors:
+    - sample usage of akka typed actors:
 http://doc.akka.io/docs/akka/2.2.3/java/typed-actors.html
+	- (optional) migrate unit tests to use JavaTestKit more deeply ...
 
 
 - others (later):
@@ -129,11 +122,19 @@ cls && grails test-app integration: -echoOut
 - for release 0.6.5 (maintenance public release):
     + add Thumbs.db in pluginExcludes ... ok
 
-- for release 0.10.3 (maintenance public release):
+- for release 0.12.5 (maintenance public release):
+	- the strange number version of the plugin is made by Scala-2.10.2 (required by Akka-2.2.3):
+		10.2 + 2.3 = 10.5 :-) ... but next version probably will be 1.0.0
 	- update to Akka-2.2.3 (aligned with Scala-2.10.2), so this strange number in the plugin release ... ok
 	- verify if add an akkaService ... but check how to configure it from outside ... ok but later
 	- do other tests and small adjustments ... ok
 	- removed the Typesafe Maven repository (no more needed) ... ok
+	- updates for Akka-2.2.3 started (see LocalAkkaUnitTests under test webapp, unit tests):
+		- make it work in the test webapp, then copy/update even in the plugin ... ok
+		- to run only unit tests with output use (from the root folder of the test webapp: ... ok
+		  grails test-app unit: -echoOut
+	- fix tests (make them work) both for the plugin, and for the test webapp ... ok
+    - update Groovy doc files ... ok
 
 
 ---------------

@@ -14,28 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class AkkaGrailsPlugin {
-    def version = "0.12.5"
-    def grailsVersion = "2.0 > *"
-    def title = "Akka Integration"
-    def author = "Sandro Martini"
-    def authorEmail = "sandro.martini@gmail.com"
-    def description = 'Akka actors integration from Groovy and Java, in a Servlet 3.x environment'
-    def documentation = "http://smartiniongithub.github.com/grails-akka/"
+import java.util.Collections;
+import java.util.List;
 
-    def license = "APACHE"
-    def issueManagement = [ system: "github", url: "https://github.com/smartiniOnGitHub/grails-akka/issues/" ]
-    def scm = [ url: "https://github.com/smartiniOnGitHub/grails-akka/" ]
+/**
+ * Map data message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ */
 
-    def pluginExcludes = [
-		'**/Thumbs.db',
-        'src/docs/**',
-        'src/groovy/grails_akka_test/**'
-    ]
+class MapData implements Serializable {
+	private List data;
 
-    def developers = [
-        [name: "Sandro Martini", email: "sandro.martini@gmail.com"]
-    ]
+	public List getData() {
+		return data;
+	}
+
+	public MapData(List data) {
+		this.data = Collections.unmodifiableList(data);
+	}
 
 }

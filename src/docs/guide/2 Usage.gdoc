@@ -8,11 +8,6 @@ plugins {
 }
 {code}
 
-or the old way:
-{code}
-grails install-plugin akka
-{code}
-
 
 h4. Requirements
 
