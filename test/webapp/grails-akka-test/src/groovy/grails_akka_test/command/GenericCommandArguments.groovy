@@ -21,5 +21,6 @@ package grails_akka_test.command
  */
 enum GenericCommandArguments
 {
-    NAME
+    NAME,
+	VALUE
 }
