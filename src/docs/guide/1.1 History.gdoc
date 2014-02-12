@@ -1,6 +1,11 @@
 h4. History
 
 * February 2014
+** 1.0.0 release
+*** Updated to Grails-2.2.4
+*** Add AkkaService
+
+* February 2014
 ** 0.12.5 release
 *** Updated to Akka-2.2.3 (aligned with Scala-2.10.2)
 *** No more needed the Typesafe Maven Repository

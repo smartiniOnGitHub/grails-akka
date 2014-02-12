@@ -25,3 +25,6 @@ log4j = {
 grails.doc.authors = 'Sandro Martini'
 grails.doc.license = 'Apache License 2.0'
 grails.doc.title   = 'Akka Integration'
+
+grails.views.default.codec="none" // none, html, base64
+grails.views.gsp.encoding="UTF-8"
