@@ -14,31 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka
 
-import grails.util.Environment
+import grails.test.mixin.*
+import org.junit.*
 
-import javax.servlet.ServletContext
-
-class BootStrap
+/**
+ * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
+ */
+@TestFor(AkkaService)
+class AkkaServiceTests 
 {
-    def grailsApplication
-	def akkaService
 
-    def init = { ServletContext sc ->
-        println "Bootstrap: running in Environment " + Environment.current
-        println """
-Remember that to test the plugin (inline here),
-this webapp (other than the usual run-app) could be run even with with run-war ...
-"""
-
-        println """
-Bootstrap: manual call to akkaService (for showing it here),
-akkaSystem is ${akkaService?.akkaSystem()}
-"""
-    }
-
-	def destroy = { ServletContext sc ->
-        println "Bootstrap: destroying webapp"
+	void testAkkaSystemNotNull() {
+		fail "Implement me"
+// TODO: fix this test ...
 	}
 
 }

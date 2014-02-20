@@ -106,4 +106,5 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     // optional, add higher logging level for the given package
+	info   'grails_akka', 'grails_akka_test'
 }
