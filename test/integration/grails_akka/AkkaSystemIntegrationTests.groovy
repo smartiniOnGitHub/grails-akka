@@ -63,7 +63,7 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
 		system = akkaService.akkaSystem()
         println("Actor System instance: $system")
 
-		// TODO: add an actor to the system ...
+		// TODO: add an actor to the system, or check for an existing actor ...
 
 	}
 

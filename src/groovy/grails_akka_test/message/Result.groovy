@@ -24,4 +24,6 @@ package grails_akka_test.message
 
 class Result implements Serializable {
 
+	private final Object value
+
 }

@@ -14,30 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package grails_akka
-
-import grails.test.mixin.TestFor
-import spock.lang.Specification
+package grails_akka_test.message
 
 /**
- * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
+ * Failure (marker) message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
  */
-@TestFor(AkkaController)
-class AkkaControllerSpec extends Specification 
-{
 
-	def setup() {
-	}
+class Failure implements Serializable {
 
-	def cleanup() {
-	}
-
-// TODO: implement it (check if akkaService is already injected in the controller) ...
-	void "test akkaService in controller"() {
-	}
-
-// TODO: implement it (check if akkaService is already injected in the controller) ...
-	void "test actor system from akkaService in controller"() {
-	}
+	private final Throwable reason
 
 }

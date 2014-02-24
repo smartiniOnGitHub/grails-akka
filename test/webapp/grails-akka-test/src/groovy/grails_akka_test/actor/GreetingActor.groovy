@@ -93,7 +93,7 @@ class GreetingActor extends UntypedActor
             // note that this is not the right way, but should be ok in this small test ...
             // because Thread.sleep breaks actors management as it will monopolize all threads of the used executor
             Thread.sleep(sleep)
-            // TODO: probably it's needed something like this
+            // note that probably instead it's needed something like this
             // getContext.getSystem().getScheduler().scheduleOnce(sleep, sender, "Done")
             long stopSleep = System.currentTimeMillis()
             log.info("Wait: " + "End Waiting, after " + (stopSleep - startSleep) + " milliseconds.")

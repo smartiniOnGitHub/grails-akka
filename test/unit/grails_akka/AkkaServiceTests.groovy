@@ -25,10 +25,25 @@ import org.junit.*
 @TestFor(AkkaService)
 class AkkaServiceTests 
 {
+	// def akkaService = mockFor(AkkaService)  // unnecessary here, TestFor will generate and populate a service variable here ...
+	// note that of course a unit test like this is not so useful, so instead do an integration test for the service ...
 
-	void testAkkaSystemNotNull() {
-		fail "Implement me"
-// TODO: fix this test ...
+	void testAkkaServiceNotNull() {
+        // println("akkaService instance (mocked): $akkaService")
+        // assertNotNull akkaService
+        println("akkaService instance (mocked): $service")
+        assertNotNull service
 	}
+
+	/*
+	void testAkkaSystemNotNull() {
+        // println("akkaService instance (mocked): $akkaService")
+        // assertNotNull akkaService
+        println("akkaService instance: $service.system")
+        assertNotNull service.system
+	}
+	// to enable this test method, I need  something like (in a test method I think):
+	service.metaClass.akkaSystem = { arg1 -> return true }
+	 */
 
 }

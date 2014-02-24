@@ -23,7 +23,7 @@ package grails_akka_test.message
  * <br/>
  * This code is derived from Akka Samples.
  */
-class Greeting implements Serializable
+class Greeting extends BaseMessage implements Serializable
 {
     final String who
 
