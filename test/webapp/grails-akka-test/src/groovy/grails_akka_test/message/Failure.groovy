@@ -16,14 +16,22 @@
  */
 package grails_akka_test.message
 
+import groovy.transform.ToString
+
 /**
  * Failure (marker) message, as a sample.
  * <br/>
  * Used as kind of message to send to actors.
  */
 
+@ToString(includeNames=true)
 class Failure implements Serializable {
 
-	private final Throwable reason
+	final Throwable reason
+
+    Failure(Throwable reason)
+    {
+        this.reason = reason
+    }
 
 }

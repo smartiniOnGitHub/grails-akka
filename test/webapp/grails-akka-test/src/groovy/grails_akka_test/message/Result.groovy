@@ -16,14 +16,22 @@
  */
 package grails_akka_test.message
 
+import groovy.transform.ToString
+
 /**
  * Result (marker) message, as a sample.
  * <br/>
  * Used as kind of message to send to actors.
  */
 
+@ToString(includeNames=true)
 class Result implements Serializable {
 
-	private final Object value
+	final Object value
+
+    Result(Object value)
+    {
+        this.value = value
+    }
 
 }
