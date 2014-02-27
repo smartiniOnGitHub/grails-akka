@@ -31,12 +31,18 @@ class AkkaService
 {
 	static transactional = false  // transactional behaviour not needed here ...
 
-	static private ActorSystem system
-	static final String ACTOR_SYSTEM_DEFAULT_NAME = "grails-akka"
-	
+	private static ActorSystem system
+	private static final String ACTOR_SYSTEM_DEFAULT_NAME = "grails-akka"
+
+	// useful reference to empty sender actor, use this instead of null ...
+	private static final ActorRef ACTOR_NONE = ActorRef.noSender()
+
 	def grailsApplication
 
 
+	/**
+	 * Initialization, automatically called after creation, via the PostConstruct annotation.
+	 */
 	@PostConstruct
 	void init() {
 		log.info "initializing Akka ActorSystem: start ..."
@@ -56,6 +62,9 @@ class AkkaService
 		log.info "initializing Akka ActorSystem: done."
 	}
 
+	/**
+	 * Destroy, automatically called before destroy, via the PreDestroy annotation.
+	 */
 	@PreDestroy
 	void destroy() {
 		log.info "destroying Akka ActorSystem: start shutdown ..."
@@ -67,11 +76,64 @@ class AkkaService
 	}
 
 
+	/**
+	 * Returns the Akka ActorSystem instance used here.
+	 *
+	 * @return ActorSystem
+	 */
 	ActorSystem akkaSystem() {
 		return system
 	}
 
-// TODO: add other methods ...
+	/**
+	 * Create and returns an Akka Props instance,
+	 * needed later for searching actors.
+	 *
+	 * @param Class clazz the Class to use
+	 * @return Props
+	 */
+	Props akkaProps(Class clazz) {
+		assert clazz  != null
+
+		Props props = Props.create(clazz)
+		return props
+	}
+
+	/**
+	 * Returns the Akka Actor (ActorRef instance),
+	 * found in the ActorSystem by the given arguments.
+	 *
+	 * @param Props props the Props instance to use
+	 * @param String name the name of the actor to retrieve
+	 * @return ActorSystem
+	 */
+	ActorRef akkaActorOf(Props props, String name) {
+		assert props  != null
+
+		assert system != null
+
+		ActorRef actor = (name) ? system.actorOf(props, name) : system.actorOf(props)
+		return actor
+	}
+
+	/**
+	 * Returns the Akka Actor (ActorRef instance),
+	 * found in the ActorSystem by the given arguments.
+	 *
+	 * @param Class clazz the Class to use to build Props for the actor
+	 * @param String name the name of the actor to retrieve
+	 * @return ActorSystem
+	 */
+	ActorRef akkaActorOf(Class clazz, String name) {
+		assert clazz  != null
+
+		Props props = akkaProps(clazz)
+		assert props  != null
+		assert system != null
+
+		ActorRef actor = (name) ? system.actorOf(props, name) : system.actorOf(props)
+		return actor
+	}
 
 
 }

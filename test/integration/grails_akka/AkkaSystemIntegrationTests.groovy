@@ -48,23 +48,20 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
 	public static void setup() {
         println("setup: start ...")
 
-		// show details of injected akkaService ...
-		println("akkaService: $akkaService")
-
         println("setup: end.")
 	}
 
     @Before
     void setUp()
     {
-        assertNotNull akkaService
+		// show details of injected akkaService ...
+		println("akkaService: $akkaService")
+        // assertNotNull akkaService
 
         // get the actor system, using the akkaService
-		system = akkaService.akkaSystem()
+		system = akkaService?.akkaSystem()
         println("Actor System instance: $system")
-
-		// TODO: add an actor to the system, or check for an existing actor ...
-
+        // assertNotNull system
 	}
 
 	@AfterClass
@@ -89,6 +86,88 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
         // assertNotNull classInstance
         // here I expect an InstantiationException thrown
     }
+
+    @Test
+    void testAkkaService_Base()
+    {
+        log.info "testAkkaService_Base()"
+
+		assert akkaService != null  // for completeness ...
+		assert akkaService.akkaSystem() != null  // for completeness ...
+		assertNotNull system
+	}
+
+    @Test
+    void testAkkaService_Greetings1()
+    {
+        log.info "testAkkaService_Greetings1()"
+        testAkkaService_Base()
+
+		Props    props = Props.create(GreetingActor)  // it's the same as passing GreetingActor.class
+		println("Props props: $props")
+		assertNotNull props
+
+		ActorRef actor = akkaService.akkaSystem().actorOf(props, "greeting_actor")
+        println("Actor Reference to GreetingActor: $actor")
+		assertNotNull actor
+    }
+
+    @Test
+    void testAkkaService_Greetings2()
+    {
+        log.info "testAkkaService_Greetings2()"
+        testAkkaService_Base()
+
+		Props    props = akkaService.akkaProps(GreetingActor)
+		println("Props props: $props")
+		assertNotNull props
+
+		// ActorRef actor = akkaService.akkaSystem().actorOf(props, "greeting_actor")
+		ActorRef actor = akkaService.akkaActorOf(props, "greeting_actor")
+        println("Actor Reference to GreetingActor: $actor")
+		assertNotNull actor
+    }
+
+    @Test
+    void testAkkaService_Greetings3()
+    {
+        log.info "testAkkaService_Greetings3()"
+        testAkkaService_Base()
+
+		ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
+        println("Actor Reference to GreetingActor: $actor")
+		assertNotNull actor
+    }
+
+    @Test
+    void testAkkaService_Greetings()
+    {
+        log.info "testAkkaService_Greetings()"
+        testAkkaService_Base()
+
+		ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
+        println("Actor Reference to GreetingActor: $actor")
+		assertNotNull actor
+
+// TODO: add an actor to the system, or check for an existing actor ...
+
+        // send to the greeting actor a null message
+		// since Akka-2.2.x this generate an error, so handle/check the (expected failure) ...
+        shouldFail(InvalidMessageException) {
+			actor.tell(null, null)
+        }
+
+        // send to the greeting actor a Greeting message
+        actor.tell(new Greeting("Test Greeting"), null)
+        assertNotNull actor  // dummy
+
+        // send to the greeting actor an unknown message
+        actor.tell(new String("Test String"), null)
+        assertNotNull actor  // dummy
+    }
+
+
+// TODO: add a test method with an Exception returning from the actor, in the catch, send a Failure message to the sender ...
 
 
 }
