@@ -107,10 +107,23 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
 		println("Props props: $props")
 		assertNotNull props
 
-		ActorRef actor = akkaService.akkaSystem().actorOf(props, "greeting_actor")
+		ActorRef actor = akkaService.akkaSystem().actorOf(props)
         println("Actor Reference to GreetingActor: $actor")
 		assertNotNull actor
     }
+
+	private ActorRef retrieveActor(Props props) {
+		// ActorRef actor = akkaService.akkaSystem().actorOf(props)
+		ActorRef actor = akkaService.akkaActorOf(props)
+        println("Actor Reference to GreetingActor: $actor")
+		return actor
+	}
+
+	private ActorRef retrieveActor(Class clazz) {
+		ActorRef actor = akkaService.akkaActorOf(clazz)
+        println("Actor Reference to GreetingActor: $actor")
+		return actor
+	}
 
     @Test
     void testAkkaService_Greetings2()
@@ -122,9 +135,8 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
 		println("Props props: $props")
 		assertNotNull props
 
-		// ActorRef actor = akkaService.akkaSystem().actorOf(props, "greeting_actor")
-		ActorRef actor = akkaService.akkaActorOf(props, "greeting_actor")
-        println("Actor Reference to GreetingActor: $actor")
+		// ActorRef actor = akkaService.akkaSystem().actorOf(props)
+		ActorRef actor = retrieveActor(props)
 		assertNotNull actor
     }
 
@@ -134,8 +146,7 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
         log.info "testAkkaService_Greetings3()"
         testAkkaService_Base()
 
-		ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
-        println("Actor Reference to GreetingActor: $actor")
+		ActorRef actor = retrieveActor(GreetingActor)
 		assertNotNull actor
     }
 
@@ -145,11 +156,9 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
         log.info "testAkkaService_Greetings()"
         testAkkaService_Base()
 
-		ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
-        println("Actor Reference to GreetingActor: $actor")
+		ActorRef actor = retrieveActor(GreetingActor)
 		assertNotNull actor
 
-// TODO: add an actor to the system, or check for an existing actor ...
 
         // send to the greeting actor a null message
 		// since Akka-2.2.x this generate an error, so handle/check the (expected failure) ...
@@ -166,6 +175,45 @@ class AkkaSystemIntegrationTests extends GroovyTestCase
         assertNotNull actor  // dummy
     }
 
+
+    @Test
+    void testAkkaService_OtherCommands()
+    {
+        log.info "testAkkaService_OtherCommands()"
+        testAkkaService_Base()
+
+		ActorRef actor = retrieveActor(GreetingActor)
+		assertNotNull actor
+
+        // send to the greeting actor a sample generic message
+        actor.tell(new GenericMessage<String>("simple generic message with a String"), null)
+        assertNotNull actor  // dummy
+    }
+
+    @Test
+    void testAkkaService_ActorCommand()
+    {
+        log.info "testAkkaService_ActorCommand()"
+        testAkkaService_Base()
+
+		ActorRef actor = retrieveActor(GreetingActor)
+		assertNotNull actor
+
+        // wrap sending message to the actor inside a command
+        ActorCommand cmd = new ActorCommand(actor, 
+			new GenericMessage<String>("ActorCommand: simple generic message with a String"),
+			akkaService.akkaActorNoSender()  // could be null, but this is better ...
+		)
+        println("ActorCommand    instance is: $cmd")
+        cmd.execute()
+        assertNotNull cmd  // dummy
+
+        // wrap sending message to the actor inside a command
+        ActorCommand cmd2 = new ActorCommand(actor, new String("ActorCommand: Test String"), akkaService.akkaActorNoSender())
+        println("ActorCommand    instance is: $cmd2")
+        cmd2.execute()
+        assertNotNull cmd2  // dummy
+    }
 
 // TODO: add a test method with an Exception returning from the actor, in the catch, send a Failure message to the sender ...
 

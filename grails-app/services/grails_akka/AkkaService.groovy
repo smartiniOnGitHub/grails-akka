@@ -35,7 +35,7 @@ class AkkaService
 	private static final String ACTOR_SYSTEM_DEFAULT_NAME = "grails-akka"
 
 	// useful reference to empty sender actor, use this instead of null ...
-	private static final ActorRef ACTOR_NONE = ActorRef.noSender()
+	private static final ActorRef ACTOR_NO_SENDER = ActorRef.noSender()
 
 	def grailsApplication
 
@@ -89,7 +89,7 @@ class AkkaService
 	 * Create and returns an Akka Props instance,
 	 * needed later for searching actors.
 	 *
-	 * @param Class clazz the Class to use
+	 * @param clazz the Class to use
 	 * @return Props
 	 */
 	Props akkaProps(Class clazz) {
@@ -103,16 +103,15 @@ class AkkaService
 	 * Returns the Akka Actor (ActorRef instance),
 	 * found in the ActorSystem by the given arguments.
 	 *
-	 * @param Props props the Props instance to use
-	 * @param String name the name of the actor to retrieve
-	 * @return ActorSystem
+	 * @param props the Props instance to use
+	 * @return ActorRef
 	 */
-	ActorRef akkaActorOf(Props props, String name) {
+	ActorRef akkaActorOf(Props props) {
 		assert props  != null
 
 		assert system != null
 
-		ActorRef actor = (name) ? system.actorOf(props, name) : system.actorOf(props)
+		ActorRef actor = system.actorOf(props)
 		return actor
 	}
 
@@ -120,19 +119,65 @@ class AkkaService
 	 * Returns the Akka Actor (ActorRef instance),
 	 * found in the ActorSystem by the given arguments.
 	 *
-	 * @param Class clazz the Class to use to build Props for the actor
-	 * @param String name the name of the actor to retrieve
-	 * @return ActorSystem
+	 * @param props the Props instance to use
+	 * @param name the name of the actor to retrieve
+	 * @return ActorRef
 	 */
-	ActorRef akkaActorOf(Class clazz, String name) {
+	ActorRef akkaActorOf(Props props, String name) {
+		assert props  != null
+		assert name   != null
+
+		assert system != null
+
+		ActorRef actor = system.actorOf(props, name)
+		return actor
+	}
+
+	/**
+	 * Returns the Akka Actor (ActorRef instance),
+	 * found in the ActorSystem by the given arguments.
+	 *
+	 * @param clazz the Class to use to build Props for the actor
+	 * @return ActorRef
+	 */
+	ActorRef akkaActorOf(Class clazz) {
 		assert clazz  != null
 
 		Props props = akkaProps(clazz)
 		assert props  != null
 		assert system != null
 
-		ActorRef actor = (name) ? system.actorOf(props, name) : system.actorOf(props)
+		ActorRef actor = system.actorOf(props)
 		return actor
+	}
+
+	/**
+	 * Returns the Akka Actor (ActorRef instance),
+	 * found in the ActorSystem by the given arguments.
+	 *
+	 * @param clazz the Class to use to build Props for the actor
+	 * @param name the name of the actor to retrieve
+	 * @return ActorRef
+	 */
+	ActorRef akkaActorOf(Class clazz, String name) {
+		assert clazz  != null
+		assert name   != null
+
+		Props props = akkaProps(clazz)
+		assert props  != null
+		assert system != null
+
+		ActorRef actor = system.actorOf(props, name)
+		return actor
+	}
+
+	/**
+	 * Utility method that returns a marker Actor for no sender.
+	 *
+	 * @return ActorRef
+	 */
+	ActorRef akkaActorNoSender() {
+		return ACTOR_NO_SENDER
 	}
 
 
