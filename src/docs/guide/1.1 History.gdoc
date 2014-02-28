@@ -1,9 +1,9 @@
 h4. History
 
 * February 2014
-** 1.0.0 release
+** 2.2.3 release
 *** Updated to Grails-2.2.4
-*** Add AkkaService
+*** Add AkkaService (see Tutorials for more info)
 
 * February 2014
 ** 0.12.5 release

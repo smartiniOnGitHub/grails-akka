@@ -5,8 +5,24 @@ there there are some initial unit and integration tests,
 and even an inline test webapp.
 
 Code is duplicated to avoid unnecessary complexity.
+Unnecessary code in plugin sources is already excluded in plugin packaging.
 
 Note that some code is more general than required for tests, but only to show some basic features.
+
+
+h5. AkkaService
+The plugin now has an utility service (AkkaService) that by default creates an Akka ActorSystem at application startup
+with a default name:
+- if defined, the value of grails_akka.akkaSystem.name variable, set in Grails config file
+- otherwise, the webapp context name
+- otherwise (at last), "grails-akka" will be used.
+
+Use it like any other Grails services, defining an akkaService variable.
+For more info, look at its API in generated docs.
+
+In the test webapp you can see that in Bootstrap a sample Actor is created in the system.
+There is even a sample controller (AkkaController) that interacts with plugin AkkaService, 
+and show some info of the actor system and actors.
 
 
 h4. Akka documentation

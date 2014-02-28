@@ -4,27 +4,6 @@ grails-akka - TODO
 TODO
 ----
 
-- for release 1.0.0:
-	- set release number ... ok
-	- update to Grails-2.2.x the plugin ... ok
-	- update to Grails-2.2.x the test webapp (and resources:1.2.1, etc) ... ok
-	- verify if publish even other akka modules ... no, maybe later (but I don't think)
-	- create an akkaService to simplify interaction with akka (akkaService), but verify it only in the test webapp ... ok
-	- verify if create the akkaSystem in a Servlet (or other more Grails-related), but verify if only in the test webapp ... no
-	- in akkaService (transactional false), make akkaSystem static final, and use lifecycle annotations like seen here: ...
-https://jira.grails.org/browse/GRAILS-10137
-	  then make the actorSystem dependent on the webapp context name,
-	  and then test the service in the test webapp (and even in Bootstrap, to have more info even at application startup) ... ok
-	- use akkaService directly from a sample Controller in the test webapp and ask for akkaSystem (maybe hiding it) ... ok
-	- (optional) add base class for actor messages (from Akka best practices), and add other sample generic messages ... ok
-	- in akkaService, check if akkaSystem read-only is good ... yes, it seems ok the same ... ok
-	- in akkaService, add comments to service methods, to better see them in generated docs ... ok
-	- test akkaService, with not-so-trivial unit and integration (this is important) tests ... ok
-	- in the test webapp, in Bootstrap, add one or more Actors using akkaService ... ok
-	- in the test webapp, create an AkkaController to show some akkaSystem info ... just started ...
-	- generate and publish plugin doc for this release ...
-
-
 - later:
 	- update dependencies to Akka-2.3.x and Scala-2.10.x ...
 	- in the test webapp, add the config key (grails_akka.akkaSystem.name) so the akkaService can use it as actorSystem name (when given) ...
@@ -32,7 +11,7 @@ https://jira.grails.org/browse/GRAILS-10137
 	- if/when needed, add more methods in akkaService ...
     - fix TODO in plugin ...
 	- add more tests ...
-	- verify if it's better to not expose directly the ActorSystem in the akkaService ...
+	- verify (deeply) if it's better to not expose directly the ActorSystem in the akkaService ...
     - verify the info put in readme.md
         - and then, create another test webapp (but not inline here) where to install it, following only readme info, to ensure they are right ...
     - add some long-running actor, for example giving it the delay ...
@@ -148,7 +127,7 @@ cls && grails test-app integration: -echoOut
 
 - for release 0.12.5 (maintenance public release):
 	- the strange number version of the plugin is made by Scala-2.10.2 (required by Akka-2.2.3):
-		10.2 + 2.3 = 10.5 :-) ... but next version probably will be 1.0.0
+		10.2 + 2.3 = 10.5 :-) ... but next version will be a ga release (no more 0.x release)
 	- update to Akka-2.2.3 (aligned with Scala-2.10.2), so this strange number in the plugin release ... ok
 	- verify if add an akkaService ... but check how to configure it from outside ... ok but later
 	- do other tests and small adjustments ... ok
@@ -159,6 +138,27 @@ cls && grails test-app integration: -echoOut
 		  grails test-app unit: -echoOut
 	- fix tests (make them work) both for the plugin, and for the test webapp ... ok
     - update Groovy doc files ... ok
+
+- for release 2.2.3:
+	- set release number ... ok
+	- update release number to the same of Akka ... ok
+	- update to Grails-2.2.x the plugin ... ok
+	- update to Grails-2.2.x the test webapp (and resources:1.2.1, etc) ... ok
+	- verify if publish even other akka modules ... no, maybe later (but I don't think)
+	- create an akkaService to simplify interaction with akka (akkaService), but verify it only in the test webapp ... ok
+	- verify if create the akkaSystem in a Servlet (or other more Grails-related), but verify if only in the test webapp ... no
+	- in akkaService (transactional false), make akkaSystem static final, and use lifecycle annotations like seen here: ...
+https://jira.grails.org/browse/GRAILS-10137
+	  then make the actorSystem dependent on the webapp context name,
+	  and then test the service in the test webapp (and even in Bootstrap, to have more info even at application startup) ... ok
+	- use akkaService directly from a sample Controller in the test webapp and ask for akkaSystem (maybe hiding it) ... ok
+	- (optional) add base class for actor messages (from Akka best practices), and add other sample generic messages ... ok
+	- in akkaService, check if akkaSystem read-only is good ... yes, it seems ok the same ... ok
+	- in akkaService, add comments to service methods, to better see them in generated docs ... ok
+	- test akkaService, with not-so-trivial unit and integration (this is important) tests ... ok
+	- in the test webapp, in Bootstrap, add one or more Actors using akkaService ... ok
+	- in the test webapp, create an AkkaController to show some akkaSystem info ... ok
+	- generate and publish plugin doc for this release ... ok
 
 
 ---------------
