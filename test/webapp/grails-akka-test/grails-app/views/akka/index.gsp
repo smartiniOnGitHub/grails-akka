@@ -30,6 +30,20 @@
 				</li>
 			</ul>
 			<br/>
+			<g:form name="actorForm">
+				<span class="line">
+					<label>Message for the Actor:</label>
+					<g:textField name="message" value="${message}" placeholder="Write a text message for the Actor here" />
+					<br/>
+				</span>
+				<span class="line">
+					<g:actionSubmit value="Submit" action="index" />
+					&nbsp;
+					<input type="reset" value="Reset" />
+					<br/>
+				</span>
+			</g:form>
+			<br/>
 		</div>
 		<hr/>
 		<br/>

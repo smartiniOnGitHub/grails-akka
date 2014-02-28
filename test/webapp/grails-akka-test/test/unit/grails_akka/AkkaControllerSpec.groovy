@@ -25,19 +25,53 @@ import spock.lang.Specification
 @TestFor(AkkaController)
 class AkkaControllerSpec extends Specification 
 {
+	def akkaService  // verify if needed, or if it's already injected in the controller ...
+
+
+	def setupSpec() {
+        println("setup: start ...")
+
+        println("setup: end.")
+	}
 
 	def setup() {
+		// akkaService = new AkkaService  // verify if needed here (or at least if AkkaService here is a mock of the real class) ...
 	}
 
 	def cleanup() {
 	}
 
-// TODO: implement it (check if akkaService is already injected in the controller) ...
-	void "test akkaService in controller"() {
+	def cleanupSpec() {
+        println("teardown: start ...")
+
+        println("teardown: end.")
 	}
 
-// TODO: implement it (check if akkaService is already injected in the controller) ...
-	void "test actor system from akkaService in controller"() {
+
+	void "test akkaService in controller"() {
+        setup:
+		// assert akkaService != null  // check if applicable here ...
+		def dummy = true
+
+		when:
+		def model = controller.index()
+
+		then:
+		akkaService != null
+		model.akkaSystem != null
+
+		// where:
+		// // filter conditions for this test ...
+	}
+
+	void "test actor from akkaService in controller"() {
+		when:
+		def model = controller.index()
+
+		then:
+		akkaService != null
+		model.akkaSystem != null
+		model.greetingActor != null
 	}
 
 }
