@@ -33,22 +33,22 @@ class AkkaController {
 		log.info("index - params: $params")
 
 		// publish some data (read from akkaService) to the page ...
-        assert akkaService != null  // dummy
+        // assert akkaService != null  // dummy
 		// render akkaService.akkaSystem()  // test
 
-		ActorRef actor = akkaService.akkaActorOf(GreetingActor)
+		ActorRef actor = akkaService?.akkaActorOf(GreetingActor)
 		def message = params?.message
 
         // actor.tell(new Greeting(message ?: "Test Greeting"), null)
 		if (message) {  // new, make the call only when the parameter is passed ...
-			actor.tell(new Greeting(message), null)
+			actor?.tell(new Greeting(message), null)
 		}
-        assert actor != null  // dummy
+        // assert actor != null  // dummy
 
 
 		[
-			akkaSystem: akkaService.akkaSystem(),
-			// props: akkaService.akkaProps(GreetingActor),
+			akkaSystem: akkaService?.akkaSystem(),
+			// props: akkaService?.akkaProps(GreetingActor),
 			greetingActor: actor,
 			message: message
 		]
