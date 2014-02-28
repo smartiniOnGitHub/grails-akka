@@ -66,10 +66,13 @@ akkaSystem is ${akkaService?.akkaSystem()}
 		// other version, using service simple methods ...
 		// Props    props = akkaService.akkaProps(GreetingActor)
 		// // ActorRef actor = akkaService.akkaSystem().actorOf(props, "greeting_actor")
+		// // ActorRef actor = akkaService.akkaSystem().actorOf(props)
 		// ActorRef actor = akkaService.akkaActorOf(props, "greeting_actor")
+		// ActorRef actor = akkaService.akkaActorOf(props)
 		// println("Props props: $props")
 		// other version, using service all-in-one methods ...
-		ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
+		// ActorRef actor = akkaService.akkaActorOf(GreetingActor, "greeting_actor")
+		ActorRef actor = akkaService.akkaActorOf(GreetingActor)
 
         println("Actor Reference to GreetingActor: $actor")
 	}

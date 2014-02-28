@@ -16,6 +16,10 @@
  */
 package grails_akka
 
+import grails_akka_test.actor.*
+import grails_akka_test.command.*
+import grails_akka_test.message.*
+
 /**
  * Sample Controller for displaying Akka System related info (using akkaService)
  */
@@ -24,8 +28,15 @@ class AkkaController {
 	def akkaService
 
 	def index() {
-// TODO: publish some data (read from akkaService) to the page ...
-		render akkaService.akkaSystem()  // test
+		log.info("index - params: $params")
+
+		// publish some data (read from akkaService) to the page ...
+		// render akkaService.akkaSystem()  // test
+		[
+			akkaSystem: akkaService.akkaSystem(),
+			// props: akkaService.akkaProps(GreetingActor),
+			greetingActor: akkaService.akkaActorOf(GreetingActor)
+		]
 	}
 
 
