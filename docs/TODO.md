@@ -4,6 +4,13 @@ grails-akka - TODO
 TODO
 ----
 
+- for 2.2.3.1 (maintenance over 2.2.3):
+	- update resources plugin to latest stable ... ok
+	- update all plugins in the test webapp ... ok
+	- test webapp: add a fieldset to wrap the form with input text field (and write in page which is the test run there),
+	  and put in page result of that process ...
+	- add other tests in the actor and integration tests (with slow process, etc), and call them from page to ensure all if good ...
+
 - later:
 	- update dependencies to Akka-2.3.x and Scala-2.10.x ...
 	- test webapp: add the config key (grails_akka.akkaSystem.name) so the akkaService can use it as actorSystem name (when given) ...
