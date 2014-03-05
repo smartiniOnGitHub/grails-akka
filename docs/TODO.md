@@ -8,7 +8,8 @@ TODO
 	- update release number to the same of Akka ... ok
 	- update all references (even in links, docs, etc) to this new release number ... ok
 	- update resources plugin to latest stable ... ok
-	- update all plugins in the test webapp ...
+	- update to Grails-2.2.5 (maintenance over 2.2.x) ... ok
+	- update all plugins in the test webapp ... ok
 	- add in akkaService methods to handle actorSelection, as seen here: ...
 http://doc.akka.io/docs/akka/current/java/untyped-actors.html#actorselection-java
 	- test webapp: add a fieldset to wrap the form with input text field (and write in page which is the test run there),
