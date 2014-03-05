@@ -18,7 +18,8 @@ with a default name:
 - otherwise (at last), "grails-akka" will be used.
 
 Use it like any other Grails services, defining an akkaService variable.
-For more info, look at its API in generated docs.
+For more info, look at [AkkaService API|http://smartiniongithub.github.io/grails-akka/gapi/grails_akka/AkkaService.html] 
+in generated docs.
 
 In the test webapp you can see that in Bootstrap a sample Actor is created in the system.
 There is even a sample controller (AkkaController) that interacts with plugin AkkaService, 
@@ -28,6 +29,6 @@ and show some info of the actor system and actors.
 h4. Akka documentation
 
 Look at Akka API for Java, usable from Groovy and Java code,
-from here [Akka Java API|http://doc.akka.io/docs/akka/2.2.3/java.html]
+from here [Akka Java API|http://doc.akka.io/docs/akka/current/java.html]
 
 

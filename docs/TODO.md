@@ -4,11 +4,13 @@ grails-akka - TODO
 TODO
 ----
 
-- for 2.2.3.1 (maintenance over 2.2.3):
+- for 2.2.4 (maintenance and improvements):
+	- update release number to the same of Akka ... ok
+	- update all references (even in links, docs, etc) to this new release number ... ok
 	- update resources plugin to latest stable ... ok
-	- update all plugins in the test webapp ... ok
+	- update all plugins in the test webapp ...
 	- add in akkaService methods to handle actorSelection, as seen here: ...
-http://doc.akka.io/docs/akka/snapshot/java/untyped-actors.html#actorselection-java
+http://doc.akka.io/docs/akka/current/java/untyped-actors.html#actorselection-java
 	- test webapp: add a fieldset to wrap the form with input text field (and write in page which is the test run there),
 	  and put in page result of that process ...
 	- add other tests in the actor and integration tests (with slow process, etc), and call them from page to ensure all if good ...
@@ -37,7 +39,7 @@ http://doc.akka.io/docs/akka/snapshot/java/untyped-actors.html#actorselection-ja
     - update package creation, to add even README.md, NOTICE, LICENSE files in root, and RELEASE-NOTES and README if present ...
         * add by hand CHANGES.md with inside the full history of changes ... no, better: put this in plugin docs, in gdoc format
     - sample usage of akka typed actors:
-http://doc.akka.io/docs/akka/2.2.3/java/typed-actors.html
+http://doc.akka.io/docs/akka/current/java/typed-actors.html
 	- verify if/how to set akkaSystem name to use in the akkaService ...
 	- (optional) create a Controller (and related views) for simple diagnostic purposes on the AkkaSystem ...
 	    - enabled by default only in DEV environment, and with the ability to enable it (but protected) in other environments ...
@@ -45,13 +47,13 @@ http://doc.akka.io/docs/akka/2.2.3/java/typed-actors.html
 	- generate a new (empty grails webapp), and check if the (new, lighter) version of the plugin is good, 
 	  for example copying test classes by the usual plugin test webapp ...
     - sample usage of akka poison pill messages:
-http://doc.akka.io/docs/akka/2.2.3/java/untyped-actors.html
+http://doc.akka.io/docs/akka/current/java/untyped-actors.html
     - verify if/how to exclude the transitivity of scala, to avoid dependency errors in the grails dependency-report ...
         - put exclusions for this in the BuildConfig of the plugin, until I get 0 evicted (in build, compile, and runtime)... ok
         - I commented all the exclusions for now otherwise a compile error will happen ...
           just for reference, but could be the wrong way to do this, so let's see later if/how to fix this
     - sample usage of Futures:
-http://doc.akka.io/docs/akka/2.2.3/java/futures.html
+http://doc.akka.io/docs/akka/current/java/futures.html
     - fix remaining TODO in code ...
 
 
@@ -80,7 +82,7 @@ DONE
 cls && grails test-app unit: -echoOut
 cls && grails test-app integration: -echoOut
 
-- try with some local actor, as seen here: http://doc.akka.io/docs/akka/2.0.5/java/untyped-actors.html
+- try with some local actor, as seen here: http://doc.akka.io/docs/akka/current/java/untyped-actors.html
     + ok (but without a specific configuration given to it),
       both in unit and integration tests (but had to duplicate test classes, to not put in the plugin, to have it cleaner) ...
 
@@ -88,8 +90,8 @@ cls && grails test-app integration: -echoOut
     + add some Groovy-specific extensions (annotations, etc), to show how to simplify code ... ok
 
 - add sample of (better) testing of actors and logic used inside them using akka TestKit, as seen here:
-  http://doc.akka.io/docs/akka/2.0.5/java/testing.html
-  http://doc.akka.io/docs/akka/2.0.5/scala/testing.html
+  http://doc.akka.io/docs/akka/current/java/testing.html
+  http://doc.akka.io/docs/akka/current/scala/testing.html
 
 - move test classes in subpackages by type (actor, command, message) ... ok
 - copy classes used by tests (actor, command, message) even under the test webapp, to test (later) real calls to them from there ... ok
@@ -141,13 +143,13 @@ cls && grails test-app integration: -echoOut
     + add Thumbs.db in pluginExcludes ... ok
 
 - for release 0.12.5 (maintenance public release):
-	- the strange number version of the plugin is made by Scala-2.10.2 (required by Akka-2.2.3):
+	- the strange number version of the plugin is made by Scala-2.10.2 (required by Akka):
 		10.2 + 2.3 = 10.5 :-) ... but next version will be a ga release (no more 0.x release)
 	- update to Akka-2.2.3 (aligned with Scala-2.10.2), so this strange number in the plugin release ... ok
 	- verify if add an akkaService ... but check how to configure it from outside ... ok but later
 	- do other tests and small adjustments ... ok
 	- removed the Typesafe Maven repository (no more needed) ... ok
-	- updates for Akka-2.2.3 started (see LocalAkkaUnitTests under test webapp, unit tests):
+	- updates required by Akka started (see LocalAkkaUnitTests under test webapp, unit tests):
 		- make it work in the test webapp, then copy/update even in the plugin ... ok
 		- to run only unit tests with output use (from the root folder of the test webapp: ... ok
 		  grails test-app unit: -echoOut

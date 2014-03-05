@@ -1,7 +1,8 @@
 h4. History
 
 * March 2014
-** 2.2.3.1 release
+** 2.2.4 release
+*** Updated to Akka-2.2.4 (aligned with Scala-2.10.2)
 *** Small fixes/improvements
 
 * February 2014
