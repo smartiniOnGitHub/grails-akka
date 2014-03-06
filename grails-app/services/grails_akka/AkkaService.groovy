@@ -180,5 +180,21 @@ class AkkaService
 		return ACTOR_NO_SENDER
 	}
 
+	/**
+	 * Returns the Akka Actor (ActorSelection instance),
+	 * found in the ActorSystem by the given arguments.
+	 *
+	 * @param path the path of the actor to retrieve, as a String
+	 * @return ActorSelection
+	 */
+	ActorSelection akkaActorSelection(String path) {
+		assert path   != null
+
+		assert system != null
+
+		ActorSelection selection = system.actorSelection(path)
+		return selection
+	}
+
 
 }
