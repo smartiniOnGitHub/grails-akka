@@ -14,18 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
+import java.util.Collections;
+import java.util.List;
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+/**
+ * Map data message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ */
 
-        "/"(view:"/index")
-        "500"(view:'/error')
+class MapData implements Serializable {
+	private List data;
+
+	public List getData() {
+		return data;
+	}
+
+	public MapData(List data) {
+		this.data = Collections.unmodifiableList(data);
 	}
 
 }

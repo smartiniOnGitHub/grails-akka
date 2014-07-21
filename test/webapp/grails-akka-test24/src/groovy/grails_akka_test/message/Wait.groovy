@@ -14,18 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+import org.springframework.util.Assert
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
+/**
+ * Waiting message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ */
+@EqualsAndHashCode
+@ToString
+class Wait implements Serializable
+{
+    final long msec
 
+    Wait(long msec)
+    {
+        Assert.isTrue(msec >= 0, "Waiting time must be 0 or positive.")
+        this.msec = msec
+    }
 }

@@ -14,18 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
+/**
+ * Greeting message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ * <br/>
+ * This code is derived from Akka Samples.
+ */
+class Greeting extends BaseMessage implements Serializable
+{
+    final String who
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
-
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
+    Greeting(String who)
+    {
+        this.who = who
+    }
 
 }

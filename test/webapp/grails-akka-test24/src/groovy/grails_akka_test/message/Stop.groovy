@@ -14,18 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
-
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
-
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
-
+/**
+ * Stop message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ */
+class Stop extends BaseMessage
+{
 }

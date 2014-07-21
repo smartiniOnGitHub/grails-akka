@@ -14,18 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
+/**
+ * ImmutableMessage, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ * <br/>
+ * This code is derived from Akka Samples.
+ */
+class ImmutableMessage
+{
+    private final int sequenceNumber
+    private final List<String> values
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+    ImmutableMessage(int sequenceNumber, List<String> values)
+    {
+        this.sequenceNumber = sequenceNumber
+        this.values         = Collections.unmodifiableList(new ArrayList<String>(values))
+    }
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
+    int getSequenceNumber() {
+        return sequenceNumber
+    }
 
+    List<String> getValues() {
+        return values
+    }
 }

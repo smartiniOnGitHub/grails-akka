@@ -14,18 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.actor
 
-class UrlMappings {
+import akka.actor.UntypedActor
+import akka.event.Logging
+import akka.event.LoggingAdapter
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+/**
+ * Abstract base actor class, to use (when desired) as base class for all other actors here.
+ */
+abstract class BaseActor extends UntypedActor
+{
+    LoggingAdapter log = Logging.getLogger(getContext().system(), this)
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
-
+    @Override
+    void onReceive(Object message) throws Exception
+    {
+        // do nothing here ... but override in subclasses
+        // String messageClassName = message?.getClass()?.getName()
+    }
 }

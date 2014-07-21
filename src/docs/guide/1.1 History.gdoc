@@ -1,5 +1,10 @@
 h4. History
 
+* Later 2014
+** 2.3.4_2.10 release
+*** Updated to Akka-2.3.4 (aligned with Scala-2.10.4)
+*** Fix integration tests with Grails-2.4
+
 * March 2014
 ** 2.2.4 release
 *** Updated to Akka-2.2.4 (aligned with Scala-2.10.2)

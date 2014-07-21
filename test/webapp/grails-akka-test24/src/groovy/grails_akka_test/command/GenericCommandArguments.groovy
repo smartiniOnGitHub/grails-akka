@@ -14,18 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.command
 
-class UrlMappings {
-
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
-
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
-
+/**
+ * Enum with standard keys to use as keys (but as Strings) in the GenericCommand arguments map.
+ */
+enum GenericCommandArguments
+{
+    NAME,
+	VALUE
 }

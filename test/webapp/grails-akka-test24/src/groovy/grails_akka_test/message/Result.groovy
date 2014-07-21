@@ -14,18 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package grails_akka_test.message
 
-class UrlMappings {
+import groovy.transform.ToString
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+/**
+ * Result (marker) message, as a sample.
+ * <br/>
+ * Used as kind of message to send to actors.
+ */
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-	}
+@ToString(includeNames=true)
+class Result implements Serializable {
+
+	final Object value
+
+    Result(Object value)
+    {
+        this.value = value
+    }
 
 }
