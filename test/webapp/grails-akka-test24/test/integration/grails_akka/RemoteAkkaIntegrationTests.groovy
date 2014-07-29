@@ -16,12 +16,11 @@
  */
 package grails_akka
 
-import grails.test.mixin.TestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
 import grails_akka_test.actor.*
 import grails_akka_test.command.*
 import grails_akka_test.message.*
 
+import org.apache.log4j.*
 import org.junit.*
 
 import akka.actor.*
@@ -34,9 +33,11 @@ import scala.concurrent.duration.Duration
  * <br/>
  * Integration tests with a Remote Akka System.
  */
-class RemoteAkkaIntegrationTests extends GroovyTestCase
+class RemoteAkkaIntegrationTests 
 {
 	static transactional = false  // transactional behaviour not needed here ...
+
+	static def log  // needed because here (in tests) Grails doesn't inject the logger instance ...
 
 	// useful reference to empty sender actor, use this instead of null ...
 	static final ActorRef ACTOR_NONE = ActorRef.noSender()
@@ -54,6 +55,8 @@ class RemoteAkkaIntegrationTests extends GroovyTestCase
 	@BeforeClass
 	public static void setup() {
         println("setup: start ...")
+
+		log = LogManager.getLogger("LocalAkkaIntegrationTests")  // get logger reference
 
 		// system = ActorSystem.create();
 		system = ActorSystem.create("RemoteActorSystem");
@@ -102,7 +105,7 @@ class RemoteAkkaIntegrationTests extends GroovyTestCase
         def className = "akka.actor.ActorSystem"  // abstract, so not instantiable ...
         def classInstance = Class.forName(className).newInstance()
         println("$className instance is: $classInstance")
-        // assertNotNull classInstance
+        // assert classInstance
         // here I expect an InstantiationException thrown
     }
 
@@ -114,7 +117,7 @@ class RemoteAkkaIntegrationTests extends GroovyTestCase
         def className = "akka.actor.UntypedActor"  // abstract, so not instantiable ...
         def classInstance = Class.forName(className).newInstance()
         println("$className instance is: $classInstance")
-        // assertNotNull classInstance
+        // assert classInstance
         // here I expect an InstantiationException thrown
     }
 
@@ -125,10 +128,10 @@ class RemoteAkkaIntegrationTests extends GroovyTestCase
 
 		// sample usage of JavaTestKit from the outside ...
         println("       Actor System instance: $system")
-        assertNotNull system
+        assert system
 		final JavaTestKit probe = new JavaTestKit(system);
         println("probe instance is: $probe")
-        assertNotNull probe
+        assert probe
     }
 
 

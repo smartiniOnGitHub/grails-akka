@@ -3,12 +3,16 @@ grails-akka - TODO
 
 TODO
 ----
+- for 2.3.4_2.10 (update to latest Akka, the version for Scala-2.10.x):
+* Later 2014
+** 2.3.4_2.10 release
+*** Updated to Akka-2.3.4 (aligned with Scala-2.10.4)
 
 - later:
 	- update dependencies to Akka-2.3.4 or later (but stay on Scala-2.10.x for now) ...
-	- check if set a new plugin release as 2.3.4 or 2.3.4_2.10 (like in the Scala world), and then make even a _2.11 release ...
-	- create a (another) test webapp with Grails-2.4.2 and configure it for testing the plugin in inline mode (as in the other) ... ok
-	- merge/update changes from the existing (older) test webapp into the new one (based on Grails-2.4.x)... ok
+	- check if set a new plugin release as 2.3.4 or 2.3.4_2.10 (like in the Scala world), and then make even a _2.11 release (and update plugin page with this info) ...
+	- check if existing plugin integration tests still need to extend GroovyTestCase and need to import TestMixin etc classes ...
+	- update integration tests to use Spock (and no more JUnit 4.x) ... later, but starting from test webapp for Grails-2.4.x ...
 	- test webapp24: fix failing tests (only) in its integration tests, see not versioned file integration-tests.log ...
 		cls && grails test-app integration:  -echoOut > integration-tests.log
 	- test webapp: add a fieldset to wrap the form with input text field (and write in page which is the test run there),
@@ -194,6 +198,16 @@ https://jira.grails.org/browse/GRAILS-10137
 	- add in akkaService methods to handle actorSelection, as seen here: ... ok
 http://doc.akka.io/docs/akka/current/java/untyped-actors.html#actorselection-java
 	- generate and publish plugin doc for this release ... ok
+
+- for 2.2.4.1 (maintenance and compatibility of tests with Grails-2.4):
+	- stay with Akka-2.2.4 and Scala-2.10.x ... ok
+	- create a (another) test webapp with Grails-2.4.2 and configure it for testing the plugin in inline mode (as in the other) ... ok
+	- merge/update changes from the existing (older) test webapp into the new one (based on Grails-2.4.x)... ok
+	- test-webapp24: disable fork execution for tests, to see if it's this that makes some tests failing ... no, this is not the cause
+	- test-webapp24: remove extends GroovyTestCase (using old JUnit 3 approach) from test (integration tests were failing), and manually inject a logger instance there ... ok
+	- make the plugin pass tests in the test-webapp24 ... ok
+	- make the plugin pass tests in the original test-webapp ... ok
+	- update (and then publish) Groovy doc files ... ok
 
 
 ---------------

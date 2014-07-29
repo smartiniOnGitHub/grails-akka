@@ -16,7 +16,7 @@
  */
 
 class AkkaGrailsPlugin {
-    def version = "2.2.4"
+    def version = "2.2.4.1"
     def grailsVersion = "2.2 > *"
     def title = "Akka Integration"
     def author = "Sandro Martini"

@@ -16,12 +16,11 @@
  */
 package grails_akka
 
-import grails.test.mixin.TestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
 import grails_akka_test.actor.*
 import grails_akka_test.command.*
 import grails_akka_test.message.*
 
+import org.apache.log4j.*
 import org.junit.*
 
 import akka.actor.*
@@ -34,9 +33,11 @@ import scala.concurrent.duration.Duration
  * <br/>
  * Integration tests with a Local Akka System.
  */
-class LocalAkkaIntegrationTests extends GroovyTestCase
+class LocalAkkaIntegrationTests 
 {
 	static transactional = false  // transactional behaviour not needed here ...
+
+	static def log  // needed because here (in tests) Grails doesn't inject the logger instance ...
 
 	// useful reference to empty sender actor, use this instead of null ...
 	static final ActorRef ACTOR_NONE = ActorRef.noSender()
@@ -54,6 +55,8 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 	@BeforeClass
 	public static void setup() {
         println("setup: start ...")
+
+		log = LogManager.getLogger("LocalAkkaIntegrationTests")  // get logger reference
 
 		// system = ActorSystem.create();
 		system = ActorSystem.create("LocalActorSystem");
@@ -103,7 +106,7 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
         def className = "akka.actor.ActorSystem"  // abstract, so not instantiable ...
         def classInstance = Class.forName(className).newInstance()
         println("$className instance is: $classInstance")
-        // assertNotNull classInstance
+        // assert classInstance
         // here I expect an InstantiationException thrown
     }
 
@@ -115,7 +118,7 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
         def className = "akka.actor.UntypedActor"  // abstract, so not instantiable ...
         def classInstance = Class.forName(className).newInstance()
         println("$className instance is: $classInstance")
-        // assertNotNull classInstance
+        // assert classInstance
         // here I expect an InstantiationException thrown
     }
 
@@ -126,10 +129,10 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 
 		// sample usage of JavaTestKit from the outside ...
         println("       Actor System instance: $system")
-        assertNotNull system
+        assert system
 		final JavaTestKit probe = new JavaTestKit(system);
         println("probe instance is: $probe")
-        assertNotNull probe
+        assert probe
     }
 
 
@@ -141,20 +144,20 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
         // creates the local actor system
         // ActorSystem system = ActorSystem.create("GreetingSystem")  // commented ...
 		// reuse the actor system global in this test class
-        println("       Actor System instance: $system")
-        assertNotNull system
+		println("       Actor System instance: $system")
+		assert system
 
         // get a reference to our greeting actor
         // ActorRef actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")  // commented, to reuse the actor reference global in this test class
         // actor = system.actorOf(Props.create(GreetingActor.class), "greeting_actor")
 		println("props: $props")
-        assertNotNull props
+        assert props
 		// actor = system.actorOf(props, "greeting_actor")
 		// final ActorRef actor = system.actorOf(props, "greeting_actor")
 		// final ActorRef actor = system.actorOf(props);
 		actor = system.actorOf(props);
 		println("Actor Reference instance is: $actor")
-        assertNotNull actor
+        assert actor
     }
 
     @Test
@@ -171,11 +174,11 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 
         // send to the greeting actor a Greeting message
         actor.tell(new Greeting("Test Greeting"), null)
-        assertNotNull actor  // dummy
+        assert actor  // dummy
 
         // send to the greeting actor an unknown message
         actor.tell(new String("Test String"), null)
-        assertNotNull actor  // dummy
+        assert actor  // dummy
     }
 
     @Test
@@ -186,7 +189,7 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 
         // send to the greeting actor a sample generic message
         actor.tell(new GenericMessage<String>("simple generic message with a String"), null)
-        assertNotNull actor  // dummy
+        assert actor  // dummy
     }
 
     @Test
@@ -202,13 +205,13 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 		)
         println("ActorCommand    instance is: $cmd")
         cmd.execute()
-        assertNotNull cmd  // dummy
+        assert cmd  // dummy
 
         // wrap sending message to the actor inside a command
         ActorCommand cmd2 = new ActorCommand(actor, new String("ActorCommand: Test String"), ACTOR_NONE)
         println("ActorCommand    instance is: $cmd2")
         cmd2.execute()
-        assertNotNull cmd2  // dummy
+        assert cmd2  // dummy
     }
 
 // TODO: add a test method with an Exception returning from the actor, in the catch, send a Failure message to the sender ...
@@ -228,7 +231,7 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
         long delta = stopSleep - startSleep
         // TODO: enable later and make it working ...
         // assertTrue delta >= sleepTime
-        assertNotNull actor  // dummy
+        assert actor  // dummy
     }
 
     @Test
@@ -239,15 +242,15 @@ class LocalAkkaIntegrationTests extends GroovyTestCase
 
         // send to the greeting actor a stop message
         actor.tell(new Stop(), null)
-        assertNotNull actor  // dummy
+        assert actor  // dummy
 
         // // send to the greeting actor a shutdown message
         // actor.tell(new Shutdown(), null)
-        // assertNotNull actor  // dummy
+        // assert actor  // dummy
 
         // send to the greeting actor an unknown message
         actor.tell(new String("Test String"), null)
-        assertNotNull actor  // dummy
+        assert actor  // dummy
         // ok, but note that this actor (after the Shutdown message) will not get this message ...
     }
 
