@@ -51,7 +51,8 @@ class AkkaService
 		// first on the (optional) config variable (grails_akka.akkaSystem.name),
 		// otherwise on the webapp name, or last use a default one ...
 		// def applicationContext = grailsApplication.mainContext
-		def applicationName = grailsApplication.config.grails_akka.akkaSystem.name
+		// def applicationName = grailsApplication.config.grails_akka.akkaSystem.name
+		def applicationName = grailsApplication.config?.grails_akka?.akkaSystem?.name
 		if (applicationName == null || applicationName.getClass() == groovy.util.ConfigObject)  // config key not defined
 			applicationName = grailsApplication.metadata.getApplicationName() ?: ACTOR_SYSTEM_DEFAULT_NAME
 		
