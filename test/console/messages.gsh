@@ -1,4 +1,6 @@
 // some Groovy statements for testing available classes from the Grails Console
+//
+// to run this with right CLASSPATH and libraries, ensure to run inside a Grails Console started in Plugin main folder (and not simply from a Groovy Console) ...
 
 import  grails_akka_test.message.*
 
