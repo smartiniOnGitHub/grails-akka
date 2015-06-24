@@ -20,7 +20,7 @@ grails.project.work.dir = "target"
 grails.project.source.level = 1.6
 grails.project.target.level = 1.6
 
-def akkaVersion = '2.2.4'
+def akkaVersion = '2.2.5'
 def scalaSuffixVersion = '_2.10'
 
 grails.project.dependency.resolution = {
