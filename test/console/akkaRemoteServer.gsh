@@ -22,11 +22,10 @@ println("Application: Start a simple server console application for creating som
 // setup phase
 println("setup: start at ${new Date()}.")
 
-// TODO: print Akka version (and related Scala version) ...
-
 def akkaConfig = '''
 akka {
   loglevel = 'DEBUG'
+  daemonic = on # workaround to keep it running here
   actor {
     provider = 'akka.remote.RemoteActorRefProvider'
   }
@@ -39,14 +38,21 @@ akka {
     }
     log-sent-messages = on
     log-received-messages = on
+    log-remote-lifecycle-events = on
+    log-frame-size-exceeding = on
+    # log-buffer-size-exceeding = 50000
   }
 }
 '''
+def cl = this.class.classLoader
+println("using Groovy ClassLoader: $cl")
+println("using Akka version: ${ActorSystem.Version()}")
 
 // global actor system to start here
 final String remoteSystemName = "RemoteActorSystem"
 final ActorSystem system = // ActorSystem.create(remoteSystemName)
-    ActorSystem.create(remoteSystemName, ConfigFactory.load(akkaConfig))
+    // ActorSystem.create(remoteSystemName, ConfigFactory.load(akkaConfig))
+    ActorSystem.create(remoteSystemName, ConfigFactory.load(akkaConfig), cl)  // set Groovy classloader
 println("using Akka Config: $akkaConfig")
 println("system: $system")
 Props       props  = Props.create(GreetingActor.class)
